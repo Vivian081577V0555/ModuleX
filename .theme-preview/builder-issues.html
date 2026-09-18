@@ -1,0 +1,744 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>惠丞生活服務平台</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="E96r/euih9EmVpgQQ9ojKUDdd5KYt4xsfUaeO6LWF4KvUw/QW4NTDzBXA/vsttkm4qsyfSDHziU9pj4zNJJJVA==" />
+<link rel='shortcut icon' href='/favicon.ico?1767666301' />
+<link rel="stylesheet" media="all" href="/stylesheets/jquery/jquery-ui-1.13.2.css?1767666302" />
+<link rel="stylesheet" media="all" href="/stylesheets/tribute-5.1.3.css?1767666302" />
+<link rel="stylesheet" media="all" href="/themes/community_saas/stylesheets/application.css?1784048880" />
+<link rel="stylesheet" media="all" href="/stylesheets/responsive.css?1767666302" />
+
+<script src="/javascripts/jquery-3.6.1-ui-1.13.2-ujs-6.1.7.6.js?1767666302"></script>
+<script src="/javascripts/tribute-5.1.3.min.js?1767666302"></script>
+<script src="/javascripts/tablesort-5.2.1.min.js?1767666302"></script>
+<script src="/javascripts/tablesort-5.2.1.number.min.js?1767666302"></script>
+<script src="/javascripts/application.js?1767666302"></script>
+<script src="/javascripts/responsive.js?1767666302"></script>
+<script>
+//<![CDATA[
+$(window).on('load', function(){ warnLeavingUnsaved('The current page contains unsaved text that will be lost if you leave this page.'); });
+//]]>
+</script>
+<script src="/themes/community_saas/javascripts/theme.js?1782371165"></script>
+<script>
+//<![CDATA[
+rm = window.rm || {};rm.AutoComplete = rm.AutoComplete || {};rm.AutoComplete.dataSources = JSON.parse('{"issues":"/issues/auto_complete?q=","wiki_pages":"/wiki_pages/auto_complete?q="}');
+//]]>
+</script>
+<link rel="stylesheet" media="screen" href="/plugin_assets/redmine_advanced_checklists/stylesheets/style.css?1784132126" />  <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_custom_reminder/stylesheets/custom_reminders.css?1783865004" />    
+<!-- [view customize plugin] path:/login -->
+<link rel="stylesheet" media="screen" href="/plugin_assets/view_customize/stylesheets/view_customize.css?1773581487" /><script type="text/javascript">
+//<![CDATA[
+ViewCustomize = { context: {"user":{"id":4,"login":"","admin":false,"firstname":"","lastname":"Anonymous","mail":null,"lastLoginOn":null,"groups":[],"apiKey":"8ca37e5e604d95f05a2e18c7a95855dd4e3070c7","customFields":[]}} };
+//]]>
+</script>
+<!-- view customize id:6 -->
+<style type="text/css">
+body.theme-Community.saas:not(.controller-welcome.action-index) {
+  --hc-ink: #211b18;
+  --hc-muted: #625850;
+  --hc-green: #08784f;
+  background: radial-gradient(circle at 12% 8%, rgba(8,120,79,.08), transparent 30%),
+              radial-gradient(circle at 90% 12%, rgba(183,153,93,.16), transparent 28%),
+              linear-gradient(145deg, #fbfaf6, #f1eee5);
+  overflow-x: hidden;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu {
+  position: relative;
+  min-height: 34px;
+  line-height: 34px;
+  overflow: visible;
+  background: rgba(255,253,247,.92);
+  border-bottom: 1px solid rgba(33,27,24,.12);
+  box-shadow: 0 8px 24px rgba(33,27,24,.05);
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu > ul {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding-right: 260px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu #loggedas {
+  position: absolute;
+  right: 152px;
+  top: 0;
+  height: 34px;
+  line-height: 34px;
+  margin: 0;
+  color: var(--hc-muted);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu #account {
+  position: absolute;
+  right: 24px;
+  top: 0;
+  height: 34px;
+  line-height: 34px;
+  margin: 0;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu #account ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a {
+  line-height: 34px;
+  color: var(--hc-muted);
+  font-weight: 800;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a.login,
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a.register {
+  padding: 5px 13px;
+  border: 1px solid rgba(33,27,24,.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,.72);
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #header {
+  min-height: 46px;
+  padding: 9px 32px 7px;
+  background: linear-gradient(135deg, #183f35, #43846c);
+  border: 0;
+  box-shadow: 0 12px 30px rgba(24,63,53,.14);
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #header h1 {
+  color: #fffdf7;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  font-weight: 900;
+  margin: 0;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu {
+  clear: both;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  margin-top: 8px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu ul {
+  margin: 0;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu.tabs a {
+  padding: 8px 14px;
+  line-height: 1.2;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu.tabs a:not(.selected) {
+  color: #fffdf7 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  text-indent: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu.tabs a.selected {
+  color: #173f35 !important;
+  background: #fffdf7 !important;
+  border-radius: 12px 12px 0 0;
+  text-indent: 0 !important;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu li:empty,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a:empty {
+  display: none !important;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #quick-search {
+  opacity: .9;
+  transform: scale(.9);
+  transform-origin: right center;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main {
+  width: calc(100vw - 48px);
+  max-width: 1760px;
+  margin: 14px auto 24px;
+  padding: 0;
+  background: transparent;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #content {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-radius: 0;
+  border: 0;
+  background: #fff;
+  box-shadow: none;
+  padding: 8px 12px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #sidebar {
+  flex: 0 0 210px;
+  border-radius: 0;
+  border: 0;
+  border-left: 1px solid #ddd;
+  background: #eee;
+  box-shadow: none;
+  padding: 0 6px 0 14px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #content h2 {
+  color: #555;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #sidebar h3 {
+  color: #666;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #content > .contextual {
+  float: right !important;
+  display: block !important;
+  width: auto !important;
+  max-width: 45%;
+  margin: 2px 0 8px 12px !important;
+  padding-left: 10px;
+  text-align: right;
+  white-space: nowrap;
+  line-height: 1.4em;
+  position: relative;
+  z-index: 2;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #content > .contextual + h2,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #content > .contextual + h3 {
+  margin-top: 0;
+  clear: none;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) input,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) select,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) textarea,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) button {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: none;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) input,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) select,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) button {
+  height: 24px;
+  min-height: 0;
+  padding: 0 7px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) textarea {
+  min-height: 60px;
+  padding: 4px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) input:focus,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) select:focus,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) textarea:focus {
+  box-shadow: none;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) input[type="submit"],
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) button[type="submit"],
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .button,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .contextual a,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) a.icon {
+  display: inline-block;
+  min-height: 0;
+  height: auto;
+  padding: 2px 8px;
+  color: #333 !important;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: none;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) input[type="submit"]:hover,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) button[type="submit"]:hover,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .button:hover,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .contextual a:hover,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) a.icon:hover {
+  background: #f6f6f6;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) fieldset,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .box,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .wiki,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .mypage-box,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .issue,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .journal {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) fieldset {
+  margin: 0 0 8px;
+  padding: 0 8px 6px;
+  min-width: inherit;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .box,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .wiki,
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) .mypage-box {
+  padding: 6px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) table.list {
+  border: 1px solid #e4e4e4;
+  border-collapse: separate;
+  border-radius: 3px;
+  border-spacing: 0;
+  box-shadow: none;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) table.list th {
+  background-color: #eee;
+  padding: 4px;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) table.list td {
+  padding: 2px 10px 2px 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main.hc-no-sidebar #sidebar {
+  display: none;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main.hc-no-sidebar #content {
+  width: 100%;
+  max-width: none;
+}
+
+body.theme-Community.saas.controller-account.action-login #main {
+  width: min(1180px, calc(100vw - 48px));
+}
+
+body.theme-Community.saas.controller-account.action-login #sidebar {
+  display: none;
+}
+
+body.theme-Community.saas.controller-account.action-login #main.nosidebar #content,
+body.theme-Community.saas.controller-account.action-login #content {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+body.theme-Community.saas.controller-account.action-login #content {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+body.theme-Community.saas.controller-account.action-login #login-form {
+  width: min(520px, 100%);
+  margin: 0;
+  padding: 34px 38px;
+  border-radius: 22px;
+  border: 1px solid rgba(33,27,24,.12);
+  background: rgba(255,253,247,.92);
+  box-shadow: 0 18px 54px rgba(42,32,24,.10);
+}
+
+@media (max-width: 720px) {
+  body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu {
+    min-height: 34px;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index) #header {
+    padding: 14px 16px 10px;
+    min-height: 52px;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index) #header h1 {
+    font-size: 18px;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index) #main {
+    width: calc(100vw - 20px);
+    margin: 12px auto 20px;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #content {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #login-form {
+    padding: 24px 20px;
+  }
+}
+
+</style>
+<!-- view customize id:9 -->
+<style type="text/css">
+@media (min-width: 981px) {
+  body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas:
+      "brand search"
+      "menu menu" !important;
+    column-gap: 32px !important;
+    row-gap: 12px !important;
+    align-items: center !important;
+    min-height: 132px !important;
+    padding-top: 22px !important;
+    padding-bottom: 0 !important;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #header h1 {
+    grid-area: brand !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    max-width: none !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #header h1::before {
+    flex: 0 0 auto !important;
+    margin-right: 0 !important;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #header .cs-header-subtitle {
+    display: inline-block !important;
+    margin: 0 0 0 16px !important;
+    color: rgba(255, 253, 247, .74) !important;
+    font-size: 18px !important;
+    font-weight: 750 !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #quick-search {
+    grid-area: search !important;
+    position: static !important;
+    align-self: center !important;
+    justify-self: end !important;
+    margin: 0 !important;
+  }
+
+  body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #main-menu {
+    grid-area: menu !important;
+    position: static !important;
+    align-self: end !important;
+    margin-top: 0 !important;
+  }
+}
+
+</style>
+<!-- view customize id:10 -->
+<style type="text/css">
+body.theme-Community.saas:not(.controller-welcome.action-index):not(.controller-account.action-login) #header .cs-header-subtitle {
+  display: none !important;
+}
+
+</style>
+<!-- view customize id:11 -->
+<style type="text/css">
+body.theme-Community.saas.controller-account.action-login #top-menu > ul,
+body.theme-Community.saas.controller-account.action-login #account a.register,
+body.theme-Community.saas.controller-account.action-login #account a[href*="/account/register"],
+body.theme-Community.saas.controller-account.action-login #header .cs-header-subtitle {
+  display: none !important;
+}
+
+body.theme-Community.saas.controller-account.action-login #top-menu {
+  justify-content: flex-end !important;
+}
+
+body.theme-Community.saas.controller-account.action-login #account ul {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+body.theme-Community.saas.controller-account.action-login #account li:has(a.register),
+body.theme-Community.saas.controller-account.action-login #account li:has(a[href*="/account/register"]) {
+  display: none !important;
+}
+
+</style>
+<!-- view customize id:14 -->
+<style type="text/css">
+body.theme-Community.saas #query_form fieldset#options {
+  display: none !important;
+}
+
+</style>
+<!-- view customize id:17 -->
+<style type="text/css">
+@media (min-width: 721px) {
+  body.theme-Community.saas.controller-account.action-login #header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 78px !important;
+    padding: 10px 34px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #header h1 {
+    margin: 0 !important;
+    line-height: 1.15 !important;
+  }
+}
+
+body.theme-Community.saas.controller-account.action-login #quick-search {
+  display: none !important;
+}
+
+</style>
+
+<!-- page specific tags -->
+  <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_basics/stylesheets/redmine_basics.css?1774280122" />
+  <script src="/plugin_assets/redmine_basics/javascripts/redmine_basics.js?1774280122"></script>
+</head>
+<body class="theme-Community saas controller-account action-login avatars-off">
+
+<div id="wrapper">
+
+<div class="flyout-menu js-flyout-menu">
+
+        <div class="flyout-menu__search">
+            <form action="/search" accept-charset="UTF-8" name="form-22def8bf" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+            
+            <label class="search-magnifier search-magnifier--flyout" for="flyout-search">&#9906;</label>
+            <input type="text" name="q" id="flyout-search" class="small js-search-input" placeholder="Search" />
+</form>        </div>
+
+
+
+    <h3>General</h3>
+    <span class="js-general-menu"></span>
+
+    <span class="js-sidebar flyout-menu__sidebar"></span>
+
+    <h3>Profile</h3>
+    <span class="js-profile-menu"></span>
+
+</div>
+
+
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a class="login" href="/login">Sign in</a></li><li><a class="register" href="/account/register">Register</a></li></ul>    </div>
+    
+    <ul><li><a class="home" href="/">Home</a></li><li><a class="projects" href="/projects">Projects</a></li><li><a class="projects-treeview" href="/projects_treeview">Projects treeview</a></li><li><a target="_blank" rel="noopener" class="help" href="https://www.redmine.org/guide">Help</a></li></ul></div>
+
+<div id="header">
+
+    <a href="#" class="mobile-toggle-button js-flyout-menu-toggle-button"></a>
+
+    <div id="quick-search">
+        <form action="/search" accept-charset="UTF-8" name="form-94b164c9" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+        <input type="hidden" name="scope" autocomplete="off" />
+        
+        <label for='q'>
+          <a accesskey="4" href="/search">Search</a>:
+        </label>
+        <input type="text" name="q" id="q" size="20" class="small" accesskey="f" data-auto-complete="true" />
+</form>        <div id="project-jump" class="drdn"><span class="drdn-trigger">Jump to a project...</span><div class="drdn-content"><div class="quick-search"><input type="text" name="q" id="projects-quick-search" value="" class="autocomplete" data-automcomplete-url="/projects/autocomplete.js?jump=account" autocomplete="off" /></div><div class="drdn-items projects selection"></div><div class="drdn-items all-projects selection"><a href="/projects?jump=account">All Projects</a></div></div></div>
+    </div>
+
+    <h1>惠丞生活服務平台</h1>
+
+</div>
+
+<div id="main" class="nosidebar">
+    <div id="sidebar">
+        
+        
+    </div>
+
+    <div id="content">
+        
+          
+
+<div id="login-form">
+  <form onsubmit="return keepAnchorOnSignIn(this);" action="/login" accept-charset="UTF-8" name="form-83540e69" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="ifUfjTFnr6Konv8/5qV7TwDzv6EPbBr9es5Asgmkp9A1eLuggUZ7fL6fZNRJyYFAooX6TrccWLQ6LuC6n+D5Bg==" autocomplete="off" />
+  <input type="hidden" name="back_url" value="/projects/my-home/issues" autocomplete="off" />
+  
+  <label for="username">Login</label>
+  <input type="text" name="username" id="username" tabindex="1" autocomplete="username" autofocus="autofocus" />
+  
+  <label for="password">
+    Password
+    <a class="lost_password" href="/account/lost_password">Lost password</a>
+  </label>
+  <input type="password" name="password" id="password" tabindex="2" autocomplete="current-password" />
+  
+  
+  <input type="submit" name="login" value="Login" tabindex="5" id="login-submit" />
+</form></div>
+
+
+
+
+<script>
+  (function() {
+    var residentPath = '/resident/';
+    var residentLabel = '\u9996\u9801';
+    var search = window.location.search || '';
+    var referrer = document.referrer || '';
+    var hasResidentSession = false;
+    var isMobileWidth = false;
+
+    try {
+      hasResidentSession = sessionStorage.getItem('residentPwaContext') === '1';
+    } catch (e) {}
+
+    if (window.matchMedia) {
+      isMobileWidth = window.matchMedia('(max-width: 640px)').matches;
+    }
+
+    var cameFromResident =
+      /back_url=(%2F|\/)resident/i.test(search) ||
+      referrer.indexOf('/resident') !== -1 ||
+      hasResidentSession ||
+      isMobileWidth;
+
+    if (!cameFromResident) return;
+
+    try {
+      sessionStorage.setItem('residentPwaContext', '1');
+    } catch (e) {}
+
+    function isRootHomeLink(link) {
+      if (!link) return false;
+      var href = link.getAttribute('href');
+      return href === '/' || href === window.location.origin + '/';
+    }
+
+    function rewriteResidentHomeLinks(root) {
+      var scope = root || document;
+      scope.querySelectorAll('a.home, a[href="/"]').forEach(function(link) {
+        if (!isRootHomeLink(link) && !link.classList.contains('home')) return;
+        link.href = residentPath;
+        if (link.classList.contains('home') || link.textContent.trim().toLowerCase() === 'home') {
+          link.textContent = residentLabel;
+        }
+      });
+    }
+
+    rewriteResidentHomeLinks(document);
+
+    document.addEventListener('click', function(event) {
+      var link = event.target.closest && event.target.closest('a');
+      if (!isRootHomeLink(link)) return;
+
+      event.preventDefault();
+      window.location.href = residentPath;
+    }, true);
+
+    if (window.MutationObserver) {
+      new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          mutation.addedNodes.forEach(function(node) {
+            if (node.nodeType === 1) rewriteResidentHomeLinks(node);
+          });
+        });
+      }).observe(document.body, { childList: true, subtree: true });
+    }
+
+    var headerTitle = document.querySelector('#header h1');
+    if (headerTitle) {
+      headerTitle.style.cursor = 'pointer';
+      headerTitle.addEventListener('click', function() {
+        window.location.href = residentPath;
+      });
+    }
+  })();
+</script>
+
+        
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<div id="footer">
+    Powered by <a target="_blank" rel="noopener" href="https://www.redmine.org/">Redmine</a> &copy; 2006-2026 Jean-Philippe Lang
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+
+</div>
+
+<!-- view customize id:7 -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+  function ready(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+
+  ready(function() {
+    if (document.body && document.body.classList.contains('controller-welcome') && document.body.classList.contains('action-index')) return;
+
+    var headerTitle = document.querySelector('#header h1');
+    if (headerTitle) headerTitle.textContent = '惠丞生活服務平台';
+
+    var main = document.getElementById('main');
+    var sidebar = document.getElementById('sidebar');
+    if (main && sidebar && sidebar.textContent.trim() === '' && sidebar.children.length === 0) {
+      main.classList.add('hc-no-sidebar');
+    }
+  });
+})();
+
+//]]>
+</script>
+
+</body>
+</html>
+

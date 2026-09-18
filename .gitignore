@@ -1,0 +1,27 @@
+# Secrets and local credentials
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*credentials*.csv
+account.txt
+.lightsail-key.tmp
+
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.theme-preview/chrome-profile*/
+
+# Logs and temporary files
+*.log
+*.tmp
+tmp/
+temp/
+
+# Dependency and build caches
+node_modules/
+vendor/bundle/

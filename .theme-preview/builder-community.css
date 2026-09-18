@@ -1,0 +1,1387 @@
+:root {
+  --cs-ink: #1f2933;
+  --cs-muted: #6b7280;
+  --cs-soft: #f7f4ef;
+  --cs-paper: #ffffff;
+  --cs-line: #e6ded2;
+  --cs-primary: #2f7d68;
+  --cs-primary-strong: #17634f;
+  --cs-sky: #e4f2ef;
+  --cs-sun: #f7b955;
+  --cs-coral: #e97962;
+  --cs-blue: #4267a9;
+  --cs-shadow: 0 18px 48px rgba(72, 61, 49, .12);
+  --cs-radius: 22px;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  min-width: 0;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--cs-ink);
+  background:
+    radial-gradient(circle at top left, rgba(47, 125, 104, .12), transparent 34rem),
+    linear-gradient(180deg, #fbf8f2 0%, #f5f0e8 100%);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+a,
+a:link,
+a:visited {
+  color: var(--cs-primary-strong);
+  text-decoration: none;
+}
+
+a:hover { color: #0f4d3c; }
+
+#wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+#top-menu {
+  min-height: 38px;
+  padding: 8px clamp(16px, 4vw, 44px);
+  color: rgba(255,255,255,.78);
+  background: #213d35;
+  border: 0;
+  font-size: 13px;
+}
+
+#top-menu ul { margin: 0; padding: 0; }
+#top-menu li {
+  display: inline-block;
+  margin: 0 15px 0 0;
+  list-style: none;
+}
+
+#top-menu a { color: rgba(255,255,255,.88); font-weight: 650; }
+#top-menu a:hover { color: #fff; }
+#account { float: right; }
+#loggedas { color: rgba(255,255,255,.68); }
+
+#header {
+  position: relative;
+  min-height: 112px;
+  padding: 24px clamp(18px, 4vw, 48px) 42px;
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.08), transparent 38%),
+    linear-gradient(120deg, #244f43 0%, #2f7d68 58%, #79a083 100%);
+  box-shadow: 0 16px 42px rgba(34, 66, 56, .18);
+}
+
+#header h1 {
+  margin: 0;
+  max-width: 58%;
+  overflow: hidden;
+  color: #fff;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 850;
+  letter-spacing: -.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#header h1::before {
+  content: "社";
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-right: 12px;
+  color: #244f43;
+  background: #fff7df;
+  border-radius: 15px;
+  font-size: 20px;
+  vertical-align: 2px;
+}
+
+.cs-header-subtitle {
+  margin: 7px 0 0 56px;
+  color: rgba(255,255,255,.78);
+  font-size: 14px;
+}
+
+#quick-search {
+  position: absolute;
+  top: 26px;
+  right: clamp(18px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#quick-search label {
+  color: rgba(255,255,255,.8);
+  font-size: 12px;
+}
+
+#quick-search #q,
+#project-jump .drdn-trigger {
+  min-height: 38px;
+  color: #fff;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  outline: none;
+}
+
+#quick-search #q {
+  width: 220px;
+  padding: 0 14px;
+}
+
+#project-jump.drdn {
+  position: relative;
+  width: 210px;
+}
+
+#project-jump .drdn-trigger {
+  display: block;
+  padding: 8px 36px 8px 14px;
+}
+
+#project-jump .drdn-content {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  top: 46px;
+  right: 0;
+  width: 310px;
+  max-height: 62vh;
+  overflow: auto;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  border-radius: 18px;
+  box-shadow: var(--cs-shadow);
+}
+
+#project-jump.expanded .drdn-content,
+#project-jump.open .drdn-content { display: block; }
+
+#main-menu {
+  position: absolute;
+  left: clamp(18px, 4vw, 48px);
+  right: clamp(18px, 4vw, 48px);
+  bottom: 0;
+  overflow: hidden;
+}
+
+#main-menu ul {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+#main-menu li {
+  display: inline-block;
+  margin: 0 6px 0 0;
+  list-style: none;
+}
+
+#main-menu li a {
+  display: block;
+  padding: 11px 16px 12px;
+  color: rgba(255,255,255,.78);
+  border-radius: 16px 16px 0 0;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+#main-menu li a:hover,
+#main-menu li a.selected {
+  color: #244f43;
+  background: #fffaf1;
+}
+
+#main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  width: min(100%, 1480px);
+  margin: 0 auto;
+  padding: 26px clamp(12px, 3vw, 34px) 42px;
+  gap: 22px;
+  background: transparent;
+}
+
+#content {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: clamp(18px, 3vw, 30px);
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(230, 222, 210, .78);
+  border-radius: var(--cs-radius);
+  box-shadow: var(--cs-shadow);
+}
+
+#sidebar {
+  flex: 0 0 280px;
+  padding: 20px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(230, 222, 210, .75);
+  border-radius: var(--cs-radius);
+  box-shadow: 0 12px 28px rgba(72, 61, 49, .08);
+}
+
+#sidebar h3,
+#content h2 {
+  margin-top: 0;
+  color: #25443b;
+  letter-spacing: -.03em;
+}
+
+#content h2 {
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 850;
+}
+
+#footer {
+  padding: 18px;
+  color: var(--cs-muted);
+  background: transparent;
+  text-align: center;
+  font-size: 12px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+select,
+textarea {
+  max-width: 100%;
+  padding: 10px 12px;
+  color: var(--cs-ink);
+  background: #fff;
+  border: 1px solid #d8cec0;
+  border-radius: 12px;
+  font: inherit;
+}
+
+textarea { min-height: 110px; }
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--cs-primary);
+  box-shadow: 0 0 0 4px rgba(47, 125, 104, .12);
+  outline: none;
+}
+
+input[type="submit"],
+button,
+.button,
+a.icon,
+.contextual a,
+.cs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 16px;
+  color: #fff !important;
+  background: var(--cs-primary);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 10px 22px rgba(47, 125, 104, .18);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+button:hover,
+.button:hover,
+a.icon:hover,
+.contextual a:hover,
+.cs-btn:hover {
+  background: var(--cs-primary-strong);
+}
+
+.cs-btn--ghost {
+  color: #25443b !important;
+  background: rgba(255,255,255,.76);
+  border: 1px solid rgba(47, 125, 104, .18);
+}
+
+.box,
+.wiki,
+.mypage-box,
+.issue,
+.journal,
+fieldset,
+.splitcontentleft,
+.splitcontentright {
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(72, 61, 49, .06);
+}
+
+.box,
+.wiki,
+.mypage-box,
+fieldset { padding: 18px; }
+
+table.list {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 18px;
+}
+
+table.list th {
+  padding: 12px;
+  color: #496159;
+  background: #f5efe6;
+  border-bottom: 1px solid var(--cs-line);
+}
+
+table.list td {
+  padding: 12px;
+  border-bottom: 1px solid #f0e8dc;
+}
+
+table.list tr:last-child td { border-bottom: 0; }
+
+.flash {
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 16px;
+  font-weight: 700;
+}
+
+.flash.notice { background: #e5f4ee; color: #1f6b55; }
+.flash.error { background: #fff0ed; color: #a23f2d; }
+.flash.warning { background: #fff6dc; color: #806025; }
+
+#login-form {
+  max-width: 460px;
+  margin: 32px auto;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  border-radius: 28px;
+  box-shadow: var(--cs-shadow);
+}
+
+#login-form::before {
+  content: "住戶服務入口";
+  display: block;
+  margin-bottom: 18px;
+  color: #25443b;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+
+#login-form table { width: 100%; }
+#login-form td { padding: 8px 0; }
+#login-form input[type="text"],
+#login-form input[type="password"] { width: 100%; }
+
+/* Homepage injected by View Customize */
+body.controller-welcome.action-index #main {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+body.controller-welcome.action-index #content {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.controller-welcome.action-index #sidebar { display: none; }
+
+.cs-home {
+  min-height: calc(100vh - 168px);
+  padding: clamp(22px, 4vw, 56px);
+  overflow-x: hidden;
+}
+
+.cs-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .72fr);
+  gap: clamp(24px, 4vw, 58px);
+  align-items: center;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.cs-kicker {
+  display: inline-flex;
+  margin-bottom: 16px;
+  padding: 7px 12px;
+  color: #245348;
+  background: #e7f4ee;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.cs-hero h1 {
+  margin: 0;
+  max-width: 780px;
+  color: #263d36;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.03;
+  letter-spacing: -.07em;
+}
+
+.cs-hero h1 span {
+  display: block;
+}
+
+.cs-hero p {
+  max-width: 640px;
+  margin: 24px 0 0;
+  color: #65726c;
+  font-size: clamp(17px, 2vw, 21px);
+}
+
+.cs-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.cs-hero__actions .cs-btn { min-height: 50px; padding: 12px 22px; }
+
+.cs-phone-card {
+  min-height: 560px;
+  width: 100%;
+  padding: 24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74)),
+    radial-gradient(circle at top right, rgba(247, 185, 85, .22), transparent 16rem);
+  border: 10px solid #253f37;
+  border-radius: 42px;
+  box-shadow: 0 30px 80px rgba(48, 64, 58, .22);
+}
+
+@media (min-width: 1100px) {
+  body.controller-welcome.action-index {
+    overflow: hidden;
+  }
+
+  body.controller-welcome.action-index #top-menu {
+    min-height: 34px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  body.controller-welcome.action-index #header {
+    min-height: 132px;
+    padding-top: 20px;
+    padding-bottom: 34px;
+  }
+
+  body.controller-welcome.action-index #header h1 {
+    font-size: 32px;
+  }
+
+  body.controller-welcome.action-index .cs-home {
+    height: calc(100vh - 166px);
+    min-height: 0;
+    padding-top: 28px;
+    padding-bottom: 22px;
+  }
+
+  body.controller-welcome.action-index .cs-hero {
+    gap: 44px;
+  }
+
+  body.controller-welcome.action-index .cs-hero h1 {
+    font-size: clamp(38px, 3.8vw, 56px);
+  }
+
+  body.controller-welcome.action-index .cs-hero p {
+    margin-top: 18px;
+    font-size: 18px;
+  }
+
+  body.controller-welcome.action-index .cs-phone-card {
+    min-height: 492px;
+    padding: 20px;
+    border-width: 9px;
+  }
+
+  body.controller-welcome.action-index .cs-phone-grid a {
+    min-height: 116px;
+  }
+
+  body.controller-welcome.action-index .cs-service-row {
+    margin-top: 22px;
+  }
+
+  body.controller-welcome.action-index .cs-service-card {
+    min-height: 132px;
+    padding: 18px 20px;
+  }
+
+  body.controller-welcome.action-index .cs-service-card strong {
+    margin-top: 16px;
+    font-size: 20px;
+  }
+}
+
+.cs-phone-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  color: #263d36;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.cs-phone-card__top::after {
+  content: "已登入";
+  padding: 5px 10px;
+  color: #24624f;
+  background: #e1f3ed;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.cs-phone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cs-phone-grid a {
+  min-width: 0;
+  min-height: 138px;
+  padding: 18px;
+  color: #263d36;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(72, 61, 49, .08);
+}
+
+.cs-phone-grid span {
+  display: inline-flex;
+  margin-bottom: 24px;
+  padding: 6px 10px;
+  color: #fff;
+  background: var(--cs-primary);
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.cs-phone-grid strong {
+  display: block;
+  font-size: 20px;
+}
+
+.cs-status-card {
+  margin-top: 18px;
+  padding: 20px;
+  color: #fff;
+  background: linear-gradient(135deg, #2f7d68, #426f61);
+  border-radius: 26px;
+}
+
+.cs-status-card small {
+  display: block;
+  opacity: .72;
+}
+
+.cs-status-card strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 21px;
+}
+
+.cs-service-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1320px;
+  margin: 34px auto 0;
+}
+
+.cs-service-card {
+  min-height: 176px;
+  padding: 22px;
+  color: #263d36 !important;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(230, 222, 210, .8);
+  border-radius: 26px;
+  box-shadow: 0 12px 30px rgba(72, 61, 49, .08);
+}
+
+.cs-service-card small {
+  color: var(--cs-primary);
+  font-weight: 900;
+}
+
+.cs-service-card strong {
+  display: block;
+  margin: 24px 0 8px;
+  font-size: 22px;
+}
+
+.cs-service-card span {
+  display: block;
+  color: #68756f;
+}
+
+.cs-mobile-dock { display: none; }
+
+@media (max-width: 900px) {
+  html,
+  body,
+  #wrapper {
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  body { padding-bottom: 76px; font-size: 14px; }
+
+  #top-menu {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  #header {
+    min-height: 132px;
+    padding: 20px 16px 48px;
+  }
+
+  #header h1 {
+    max-width: 100%;
+    font-size: 25px;
+  }
+
+  .cs-header-subtitle {
+    margin-left: 54px;
+    font-size: 13px;
+  }
+
+  #quick-search {
+    display: none;
+  }
+
+  #main-menu {
+    left: 10px;
+    right: 10px;
+    overflow-x: auto;
+  }
+
+  #main-menu li a {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  #main {
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    padding: 14px 12px 24px;
+  }
+
+  #content {
+    width: 100%;
+    max-width: calc(100vw - 24px);
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  #login-form {
+    width: 100%;
+    max-width: calc(100vw - 40px);
+    margin: 16px auto;
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  #login-form table,
+  #login-form tbody,
+  #login-form tr,
+  #login-form td {
+    display: block;
+    width: 100%;
+  }
+
+  #sidebar {
+    margin-top: 14px;
+    padding: 16px;
+  }
+
+  table.list {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .cs-home {
+    width: 100%;
+    max-width: 100vw;
+    min-height: auto;
+    padding: 20px 14px;
+  }
+
+  .cs-hero {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .cs-hero h1 {
+    font-size: clamp(32px, 10vw, 46px);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+
+  .cs-hero p {
+    font-size: 16px;
+  }
+
+  .cs-phone-card {
+    min-height: 0;
+    width: calc(100vw - 28px);
+    max-width: calc(100vw - 28px);
+    margin-top: 26px;
+    padding: 18px;
+    border-width: 7px;
+    border-radius: 34px;
+    overflow: hidden;
+  }
+
+  .cs-service-row {
+    grid-template-columns: 1fr;
+    margin-top: 18px;
+  }
+
+  .cs-service-card {
+    min-height: 128px;
+  }
+
+  .cs-mobile-dock {
+    position: fixed;
+    z-index: 1000;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: calc(100vw - 20px);
+    bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    padding: 8px;
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(230, 222, 210, .9);
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(43, 50, 46, .22);
+    backdrop-filter: blur(18px);
+  }
+
+  .cs-mobile-dock a {
+    display: grid;
+    place-items: center;
+    gap: 2px;
+    min-height: 50px;
+    min-width: 0;
+    color: #62706a;
+    border-radius: 16px;
+    font-size: 11px;
+    font-weight: 850;
+  }
+
+  .cs-mobile-dock span {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    color: #fff;
+    background: #8aa59a;
+    border-radius: 9px;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .cs-mobile-dock .is-active,
+  .cs-mobile-dock a:hover {
+    color: var(--cs-primary-strong);
+    background: #e8f4ee;
+  }
+
+  .cs-mobile-dock .is-active span,
+  .cs-mobile-dock a:hover span {
+    background: var(--cs-primary);
+  }
+}
+
+@media (max-width: 520px) {
+  #top-menu { font-size: 12px; }
+  #header h1::before {
+    width: 36px;
+    height: 36px;
+    border-radius: 13px;
+  }
+
+  .cs-phone-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .cs-home {
+    width: min(100%, 390px);
+    max-width: 390px;
+  }
+
+  .cs-phone-card {
+    width: min(100%, 362px);
+    max-width: 362px;
+  }
+
+  .cs-mobile-dock {
+    max-width: 370px;
+  }
+
+  #login-form {
+    width: min(100%, 340px);
+    max-width: 340px;
+    margin-left: 18px;
+    margin-right: 0;
+  }
+
+  .cs-phone-grid a {
+    min-width: 0;
+    min-height: 118px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .cs-phone-grid span { margin-bottom: 18px; }
+  .cs-phone-grid strong { font-size: 17px; }
+}
+
+@media (max-width: 640px) {
+  body.theme-Community.saas.controller-account.action-login {
+    min-height: 100vh;
+    padding-bottom: 0;
+    background:
+      radial-gradient(circle at 18% 0%, rgba(8, 120, 79, .16), transparent 30%),
+      linear-gradient(145deg, #fbfaf6, #f0ece2);
+  }
+
+  body.theme-Community.saas.controller-account.action-login #top-menu {
+    justify-content: flex-end;
+    min-height: 48px;
+    padding: max(10px, env(safe-area-inset-top)) 16px 8px;
+    background: rgba(255, 253, 247, .88);
+    border-bottom: 1px solid rgba(33, 27, 24, .08);
+    box-shadow: none;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #top-menu > ul {
+    display: none;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #account {
+    float: none;
+    margin: 0;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #account ul {
+    display: flex;
+    gap: 8px;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #account li {
+    margin: 0;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #top-menu a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid rgba(33, 27, 24, .12);
+    border-radius: 999px;
+    background: rgba(255, 253, 247, .86);
+    color: #211b18;
+    font-size: 13px;
+    font-weight: 900;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #header {
+    min-height: auto;
+    padding: 18px 20px 20px;
+    background: linear-gradient(135deg, #183f35, #3f826b);
+  }
+
+  body.theme-Community.saas.controller-account.action-login #header h1 {
+    max-width: none;
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #header h1::before {
+    width: 44px;
+    height: 44px;
+    margin-right: 12px;
+    border-radius: 16px;
+    font-size: 24px;
+  }
+
+  body.theme-Community.saas.controller-account.action-login .cs-header-subtitle {
+    margin: 10px 0 0 56px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #quick-search,
+  body.theme-Community.saas.controller-account.action-login #sidebar,
+  body.theme-Community.saas.controller-account.action-login #footer {
+    display: none;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #main {
+    width: 100%;
+    max-width: 100vw;
+    padding: 22px 18px 32px;
+    background: transparent;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #content {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #login-form {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 24px 20px 22px;
+    border-radius: 28px;
+    background: rgba(255, 253, 247, .92);
+    box-shadow: 0 20px 60px rgba(42, 32, 24, .16);
+  }
+
+  body.theme-Community.saas.controller-account.action-login #login-form::before {
+    margin-bottom: 20px;
+    color: #183f35;
+    font-size: 25px;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #login-form label {
+    display: block;
+    margin: 14px 0 8px;
+    color: #211b18;
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #login-form .lost_password {
+    float: right;
+    color: #08784f;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  body.theme-Community.saas.controller-account.action-login #login-form input[type="text"],
+  body.theme-Community.saas.controller-account.action-login #login-form input[type="password"] {
+    width: 100%;
+    min-height: 52px;
+    padding: 0 15px;
+    border: 1px solid rgba(33, 27, 24, .14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .86);
+    color: #211b18;
+    font-size: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .76);
+  }
+
+  body.theme-Community.saas.controller-account.action-login #login-form input[type="submit"] {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 18px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #183f35, #08784f);
+    color: #fffdf7;
+    font-size: 16px;
+    font-weight: 950;
+    box-shadow: 0 16px 38px rgba(8, 120, 79, .22);
+  }
+}
+
+/* Builder HC repair-only back office */
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a.projects-treeview,
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a.help,
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a.easy-gantt,
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a.dmsf,
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a[href*="projects_treeview"],
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a[href*="easy_gantt"],
+body.theme-Community.saas:not(.controller-welcome.action-index) #top-menu a[href*="dmsf"] {
+  display: none !important;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.gantt,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.calendar,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.news,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.documents,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.wiki,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.boards,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.files,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a.repository,
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a[href*="community-polls"],
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a[href*="community-finance"],
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a[href*="community-booking"],
+body.theme-Community.saas:not(.controller-welcome.action-index) #main-menu a[href*="issue_flow_templates"] {
+  display: none !important;
+}
+
+body.theme-Community.saas.controller-issues.action-index #content > h2,
+body.theme-Community.saas.controller-issues.action-index #sidebar h3 {
+  color: var(--cs-primary-strong);
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#filters,
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#options {
+  border-radius: 14px;
+  background: #fff;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#options {
+  opacity: .82;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query {
+  display: block;
+  margin: 5px 0;
+  padding: 7px 10px;
+  border-radius: 10px;
+  color: #1f5e4d;
+  background: rgba(8, 120, 79, .06);
+  font-weight: 750;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=10"],
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=11"] {
+  display: none !important;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=2"],
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=3"],
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=4"] {
+  display: none !important;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar h3 {
+  font-size: 0;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar h3::after {
+  content: "報修分類查詢";
+  font-size: 20px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar ul.queries {
+  max-height: calc(100vh - 260px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query:hover {
+  background: rgba(8, 120, 79, .12);
+  text-decoration: none;
+}
+
+body.theme-Community.saas.controller-issues.action-index .contextual a.icon-import,
+body.theme-Community.saas.controller-issues.action-index .contextual a.icon-stats {
+  display: none !important;
+}
+
+body.theme-Community.saas.controller-issues.action-index #main {
+  gap: 24px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #content {
+  min-width: 0;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar {
+  min-width: 240px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form option[value="description"],
+body.theme-Community.saas.controller-issues.action-index #query_form option[value="last_notes"],
+body.theme-Community.saas.controller-issues.action-index #query_form option[value="estimated_hours"],
+body.theme-Community.saas.controller-issues.action-index #query_form option[value="spent_hours"] {
+  display: none;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form label:has(input[value="description"]),
+body.theme-Community.saas.controller-issues.action-index #query_form label:has(input[value="last_notes"]),
+body.theme-Community.saas.controller-issues.action-index #query_form label:has(input[value="estimated_hours"]),
+body.theme-Community.saas.controller-issues.action-index #query_form label:has(input[value="spent_hours"]) {
+  display: none !important;
+}
+
+body.theme-Community.saas.controller-issues.action-index .pagination,
+body.theme-Community.saas.controller-issues.action-index .pagination ul.pages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+body.theme-Community.saas.controller-issues.action-index .pagination ul.pages,
+body.theme-Community.saas.controller-issues.action-index .pagination ul.pages li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.theme-Community.saas.controller-issues.action-index .pagination ul.pages li,
+body.theme-Community.saas.controller-issues.action-index .pagination .previous,
+body.theme-Community.saas.controller-issues.action-index .pagination .next {
+  display: inline-flex;
+  width: auto;
+}
+
+body.theme-Community.saas.controller-issues.action-index .pagination a,
+body.theme-Community.saas.controller-issues.action-index .pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 4px 9px;
+  border-radius: 8px;
+  line-height: 1.2;
+}
+
+body.theme-Community.saas.controller-issues.action-index table.list {
+  table-layout: auto;
+}
+
+/* Repair list usability refinements */
+body.theme-Community.saas:not(.controller-welcome.action-index) #quick-search label,
+body.theme-Community.saas:not(.controller-welcome.action-index) #quick-search label a {
+  color: rgba(255, 253, 247, .92) !important;
+  font-weight: 900;
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #quick-search input[type="text"],
+body.theme-Community.saas:not(.controller-welcome.action-index) #project-jump .drdn-trigger {
+  border: 1px solid rgba(255, 253, 247, .52) !important;
+  background: rgba(255, 253, 247, .94) !important;
+  color: #183f35 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 22px rgba(0,0,0,.08);
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #quick-search input[type="text"]::placeholder {
+  color: rgba(24, 63, 53, .62);
+}
+
+body.theme-Community.saas:not(.controller-welcome.action-index) #project-jump .drdn-trigger {
+  min-width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.theme-Community.saas.controller-issues.action-index #header {
+  min-height: 108px;
+  padding-top: 24px;
+  padding-bottom: 26px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #header h1 {
+  font-size: 31px;
+}
+
+body.theme-Community.saas.controller-issues.action-index .cs-header-subtitle {
+  margin-top: 8px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #main {
+  align-items: flex-start;
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #content {
+  padding: 18px 20px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #content > .contextual {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px 16px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #content > .contextual a,
+body.theme-Community.saas.controller-issues.action-index #content > .contextual .drdn-trigger {
+  min-height: 34px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#filters {
+  padding: 15px 16px;
+  margin-bottom: 12px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#filters table {
+  width: 100%;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#filters td {
+  padding: 5px 8px;
+  vertical-align: middle;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#filters select {
+  min-height: 38px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form fieldset#options {
+  display: none;
+}
+
+body.theme-Community.saas.controller-issues.action-index #query_form .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar {
+  width: 300px;
+  min-width: 300px;
+  padding: 18px;
+  background: rgba(255, 253, 247, .95);
+  border: 1px solid rgba(33, 27, 24, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(42, 32, 24, .08);
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar h3 {
+  margin: 0 0 12px;
+  padding: 0;
+  color: #183f35;
+  font-size: 0 !important;
+  line-height: 1.2;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar h3::after {
+  content: "\5831\4FEE\5206\985E\67E5\8A62";
+  font-size: 22px;
+  font-weight: 950;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar ul.queries {
+  display: grid;
+  gap: 6px;
+  max-height: calc(100vh - 300px);
+  margin: 0;
+  padding: 0 4px 0 0;
+  overflow: auto;
+  list-style: none;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar ul.queries li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar ul.queries li::marker {
+  content: "";
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query {
+  display: block !important;
+  width: 100%;
+  min-height: 34px;
+  padding: 8px 10px !important;
+  overflow: visible;
+  border: 1px solid rgba(8, 120, 79, .10);
+  border-radius: 10px;
+  background: rgba(8, 120, 79, .06) !important;
+  color: #17483c !important;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-decoration: none;
+  white-space: normal;
+  word-break: keep-all;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=2"],
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=3"],
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=4"],
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=10"],
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query[href*="query_id=11"] {
+  display: none !important;
+}
+
+body.theme-Community.saas.controller-issues.action-index #sidebar a.query:hover {
+  background: rgba(8, 120, 79, .13) !important;
+}
+
+@media (max-width: 980px) {
+  body.theme-Community.saas.controller-issues.action-index #main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.theme-Community.saas.controller-issues.action-index #sidebar {
+    order: -1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  body.theme-Community.saas.controller-issues.action-index #sidebar ul.queries {
+    max-height: none;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

@@ -1,0 +1,28 @@
+﻿W, [2026-06-25T05:47:07.416661 #750]  WARN -- : Creating scope :system. Overwriting existing method Enumeration.system.
+W, [2026-06-25T05:47:07.605031 #750]  WARN -- : Creating scope :sorted. Overwriting existing method User.sorted.
+W, [2026-06-25T05:47:09.168524 #750]  WARN -- : Creating scope :sorted. Overwriting existing method Group.sorted.
+{:protected=>true, :has_iframe=>true, :has_uuid=>true}
+h1. 社區服務 Dashboard Demo
+
+{{html
+<div class="mx-dashboard-embed" style="max-width:1120px;margin:0 auto;padding:8px 0 24px;font-family:'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:0 0 16px;">
+    <div>
+      <div style="color:#2f7d68;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;">METABASE LIVE CHART</div>
+      <h2 style="margin:6px 0 4px;color:#243f37;font-size:30px;line-height:1.15;">住戶滿意度</h2>
+      <p style="margin:0;color:#697872;">資料來源：My Home 投票區「住戶滿意度調查 Demo」，會隨投票資料更新。</p>
+    </div>
+    <a href="http://3.34.50.251:3001/public/question/abd0f148-0b77-4145-a8bc-766716506688" target="_blank" style="display:inline-flex;padding:10px 14px;border-radius:999px;background:#2f7d68;color:#fff;text-decoration:none;font-weight:800;">在 Metabase 開啟</a>
+  </div>
+  <iframe
+    src="http://3.34.50.251:3001/public/question/abd0f148-0b77-4145-a8bc-766716506688"
+    frameborder="0"
+    width="100%"
+    height="520"
+    allowtransparency="true"
+    style="display:block;width:100%;height:520px;border:1px solid #e6ded2;border-radius:24px;background:#fff;box-shadow:0 16px 44px rgba(72,61,49,.12);">
+  </iframe>
+</div>
+}}
+
+資料來源：Metabase Question #73，Redmine 投票資料表 community_polls / community_poll_options / community_poll_votes。

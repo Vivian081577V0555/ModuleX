@@ -1,0 +1,35 @@
+#admin-menu a.custom-reminder {
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    background-image: url(../../../images/email.png);
+}
+
+.custom_reminder_script {
+    width: 98%;
+    font-size: 11px;
+}
+
+table.list.custom-reminders td {
+    vertical-align: middle;
+}
+
+table.list.custom-reminders td.description {
+    text-align: left;
+    width: 25%;
+}
+
+table.list.custom-reminders td.buttons {
+    white-space: normal;
+    width: 10%;
+    text-align: left;
+}
+
+table.list.custom-reminders tr.disabled {
+    color: silver;
+}
+
+#custom_reminder_enabled_projects .projects-list {
+    max-height: 200px;
+    overflow-y: auto;
+}

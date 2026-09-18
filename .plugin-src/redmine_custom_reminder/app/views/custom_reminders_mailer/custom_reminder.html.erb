@@ -1,0 +1,6 @@
+<%= simple_format(h(@mail_body)) %>
+
+<p>
+  <%= link_to_issue(@issue, project: true, only_path: false) %><br>
+  <%= link_to(@issue_url, @issue_url) %>
+</p>

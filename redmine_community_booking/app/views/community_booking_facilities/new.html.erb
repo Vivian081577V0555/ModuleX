@@ -1,0 +1,7 @@
+<h2><%= l(:label_community_booking_facility_new) %></h2>
+
+<%= labelled_form_for @facility, url: project_community_booking_facilities_path(@project) do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+  <%= submit_tag l(:button_create) %>
+  <%= link_to l(:button_cancel), project_community_booking_facilities_path(@project) %>
+<% end %>

@@ -1,0 +1,42 @@
+ru:
+  mail_custom_reminder_subject: "[Redmine Custom Reminder] %{count} задач, за которыми вы наблюдаете"
+  label_custom_reminders_plural: "Пользовательские email-уведомления"
+  label_custom_reminder_new: "Добавить пользовательское email-уведомление"
+  label_custom_reminder_trigger_definition: "Пользовательские скрипты для обработки email-уведомления"
+  label_custom_reminders_user_type: 'Пользовательский скрипт'
+  label_reminder_enabled_projects: 'Активирован в следующих проектах'
+  label_schedule_custom_reminder: "Запустить планировщик email-рассылки"
+  label_destroy_custom_reminder: "Удалить пользовательское email-уведомление"
+  label_custom_reminder_to_author_and_watchers: "Всем(назначена, автору и наблюдателям)"
+  label_custom_reminder_import: "Импорт"
+
+  field_notification_recipient: 'Целевая группа для email-рассылки'
+  field_trigger_script: "Пользовательское условие для формирования списка задач"
+  field_user_scope_script: "Пользовательский скрипт для формирования списка задач по пользователям"
+  field_send_days: "Дни рассылки"
+  field_custom_reminder_file: 'Файл .yml с экспортированным пользовательским email-уведомлением'
+
+  permission_manage_project_custom_reminders: "Управление пользовательскими email-уведомлениями"
+
+  error_custom_reminder_import: 'Ошибка при импортировании пользовательского email-уведомления'
+
+  notice_custom_reminder_import: 'Пользовательское email-уведомление успешно импортировано'
+
+  text_custom_reminder_user_scope_info: "Скрипт для формирования списка задач по пользователям. Данный скрипт должен заполнить переменную issues_hash. Контекст вызова - итерация по списку задач issues_list. Доступные переменные: issue(Объект типа Issue), issues_hash(Список ключ-значение, ключ - объект типа User, значение - список задач), projects(Массив)"
+  text_custom_reminder_trigger_info: "Скрипт для формирования списка задач по заданным условиям. Данный скрипт должен заполнить переменную issues_list. Контекст вызова - выборка задач из базы, по проектам указанным в пользовательском email-уведомлении. Доступные переменные: issue(Объект типа Issue), issues_list(Массив), issues_hash(Список ключ-значение, ключ - объект типа User, значение - список задач), projects(Массив)"
+  text_custom_reminder_trigger_example: |
+    Issue.open.where(project: projects).each do |issue|
+      issues_list << issue if issue.updated_on <= trigger_param.day.until(Date.today)
+    end
+  text_custom_reminder_user_scope_example: |
+    issues_list.each do |issue|
+        if issue.assigned_to.is_a?(User)
+          issues_hash[issue.assigned_to] ||= []
+          	issues_hash[issue.assigned_to] << issue
+        elsif issue.assigned_to.is_a?(Group)
+          issue.assigned_to.users.each do |user|
+          	issues_hash[user] ||= []
+          		issues_hash[user] << issue
+          end
+        end
+    end

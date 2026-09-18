@@ -1,0 +1,3 @@
+# Runtime dependencies are provided by Redmine.
+# Scheduling is configured with system cron on this test server instead of the
+# optional whenever gem, because the server cannot reliably reach RubyGems.

@@ -1,0 +1,21 @@
+en:
+  label_community_booking: Facility Booking
+  label_community_booking_facility: Facility
+  label_community_booking_facility_new: New facility
+  label_community_booking_facility_edit: Edit facility
+  label_community_booking_time: Time
+  label_community_booking_no_facility: No facilities yet
+  label_community_booking_capacity: Capacity
+  label_community_booking_capacity_count: "%{count} slots"
+  label_community_booking_opening_hour: Opening hour
+  label_community_booking_closing_hour: Closing hour
+  label_community_booking_remaining: "%{count} left"
+  label_community_booking_full: Full
+  label_community_booking_closed: Closed
+  label_community_booking_booked_count: "%{booked} / %{capacity} booked"
+  notice_community_booking_created: Booking created.
+  notice_community_booking_cancelled: Booking cancelled.
+  button_community_booking_book: Book
+  text_community_booking_no_facility: Create facilities such as gym bikes, meeting rooms, or shared spaces, then set their hourly capacity.
+  text_community_booking_default_description: Select a date and hour to view remaining capacity and create a booking.
+  text_community_booking_capacity_hint: For example, capacity 5 means five gym bikes can be booked in the same hour.

@@ -1,0 +1,15 @@
+<h2><%= link_to l(:label_custom_reminders_plural), custom_reminders_path %> &#187; <%= @reminder.name %></h2>
+
+<%= error_messages_for 'reminder' %>
+
+<%= labelled_form_for @reminder do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= submit_tag l(:button_save) %>
+  <%= link_to 'Clear executed at',
+              clear_executed_at_custom_reminder_path(@reminder),
+              method: :post,
+              data: { confirm: 'Clear executed_at for this reminder? It can run again today if active and due.' },
+              class: 'icon icon-reload' %>
+<% end %>
+
+<% html_title(l(:label_custom_reminders_plural), @reminder, l(:label_administration)) -%>

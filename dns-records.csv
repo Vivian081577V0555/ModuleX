@@ -1,0 +1,7 @@
+類型,名稱,值
+CNAME,qhvkk4srptlkjlx2milwencm6ze5zhlc._domainkey.modules-x.com,qhvkk4srptlkjlx2milwencm6ze5zhlc.dkim.amazonses.com
+CNAME,ki3tbrz6b7hzs7buazzznviheqajl7fl._domainkey.modules-x.com,ki3tbrz6b7hzs7buazzznviheqajl7fl.dkim.amazonses.com
+CNAME,wgday2lqx5eojkqh4ylvufbogfjpplts._domainkey.modules-x.com,wgday2lqx5eojkqh4ylvufbogfjpplts.dkim.amazonses.com
+MX,mail.modules-x.com,10 feedback-smtp.ap-northeast-1.amazonses.com
+TXT,mail.modules-x.com,"v=spf1 include:amazonses.com ~all"
+TXT,_dmarc.modules-x.com,"v=DMARC1; p=none;"

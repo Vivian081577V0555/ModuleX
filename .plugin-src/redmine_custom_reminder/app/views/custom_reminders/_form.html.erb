@@ -1,0 +1,89 @@
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <div class="box tabular">
+      <p><%= f.text_field :name, required: true, :size => 50 %></p>
+      <p><%= f.text_area :description, :cols => 40, :rows => 5 %></p>
+      <p>
+        <%= label_tag 'custom_reminder[send_days][]', l(:field_send_days) %>
+        <% CustomReminder.send_days_array.each do |day_name, day_value| %>
+          <%= check_box_tag 'custom_reminder[send_days][]', day_value, @reminder.send_days&.include?(day_value.to_s), class: 'inline' %>
+          <%= label_tag 'custom_reminder[send_days][]', day_name, class: 'inline' %>
+        <% end %>
+      </p>
+      <p><%= f.select :notification_recipient, options_for_select(CustomReminder.notification_recipient_names, @reminder.notification_recipient), required: true %></p>
+      <p>
+        <%= f.text_field :scheduled_time, required: true, size: 5, placeholder: '09:00' %>
+        <em class="info">Daily run time in 24-hour HH:MM format.</em>
+      </p>
+      <p><%= f.check_box :active, required: true %></p>
+    </div>
+  </div>
+
+  <div class="splitcontentright">
+    <fieldset class="box" id="custom_reminder_enabled_projects">
+      <legend><%= l(:label_reminder_enabled_projects) %></legend>
+      <% selected_project_ids = @reminder.project_ids %>
+      <% project_stack = [] %>
+      <div class="projects-list">
+        <% Project.visible.active.order(:lft).each do |project| %>
+          <% project_stack.pop while project_stack.any? && project.lft > project_stack.last.rgt %>
+          <% project_depth = project_stack.size %>
+          <% checkbox_id = "custom_reminder_project_#{project.id}" %>
+          <%= label_tag checkbox_id, class: 'block', style: "padding-left: #{project_depth * 18}px" do %>
+            <%= check_box_tag 'custom_reminder[project_ids][]', project.id,
+                              selected_project_ids.include?(project.id), id: checkbox_id %>
+            <%= h(project) %>
+          <% end %>
+          <% project_stack << project %>
+        <% end %>
+      </div>
+      <%= hidden_field_tag('custom_reminder[project_ids][]', '', :id => nil) %>
+      <p><%= check_all_links 'custom_reminder_enabled_projects' %></p>
+    </fieldset>
+  </div>
+</div>
+
+<div style="clear: left;"></div>
+
+<fieldset class="box">
+  <div class="splitcontent">
+    <%= render :layout => 'layouts/collapsible',
+               :locals => {
+                   :collapsed => (!(@reminder.user_scope_script.present? || @reminder.trigger_script.present?)),
+                   :label => l(:label_custom_reminder_trigger_definition)} do %>
+      <div class="splitcontentleft">
+        <%= f.text_area :user_scope_script, :cols => 40, :rows => 20, :wrap => 'off', :class => 'custom_reminder_script' %>
+        <em class="info"><%= l(:text_custom_reminder_user_scope_info) %></em>
+        <pre><code class="ruby syntaxhl"><%= Redmine::SyntaxHighlighting::Rouge.highlight_by_language(l(:text_custom_reminder_user_scope_example), 'ruby').html_safe %></code></pre>
+      </div>
+      <div class="splitcontentright">
+        <%= f.text_area :trigger_script, :cols => 40, :rows => 20, :wrap => 'off', :class => 'custom_reminder_script' %>
+        <em class="info"><%= l(:text_custom_reminder_trigger_info) %></em>
+        <pre><code class="ruby syntaxhl"><%= Redmine::SyntaxHighlighting::Rouge.highlight_by_language(l(:text_custom_reminder_trigger_example), 'ruby').html_safe %></code></pre>
+      </div>
+    <% end %>
+  </div>
+</fieldset>
+
+<fieldset class="box">
+  <legend>Email</legend>
+  <div class="splitcontent">
+    <div class="splitcontentleft">
+      <p>
+        <%= f.text_field :mail_subject_template, required: true, size: 80 %>
+        <em class="info">Example: [{{project}}][#{{issue_id}}]</em>
+      </p>
+    </div>
+    <div class="splitcontentright">
+      <em class="info">
+        Available placeholders:
+        {{project}}, {{issue_id}}, {{issue}}, {{subject}}, {{tracker}},
+        {{status}}, {{priority}}, {{assignee}}, {{author}}, {{due_date}},
+        {{issue_url}}
+      </em>
+    </div>
+  </div>
+  <p>
+    <%= f.text_area :mail_body_template, cols: 100, rows: 10, wrap: 'soft' %>
+  </p>
+</fieldset>

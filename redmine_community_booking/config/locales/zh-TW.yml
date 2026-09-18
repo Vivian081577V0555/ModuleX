@@ -1,0 +1,21 @@
+zh-TW:
+  label_community_booking: 公設預約
+  label_community_booking_facility: 公設
+  label_community_booking_facility_new: 新增公設
+  label_community_booking_facility_edit: 編輯公設
+  label_community_booking_time: 時段
+  label_community_booking_no_facility: 尚未建立公設
+  label_community_booking_capacity: 同時可用數量
+  label_community_booking_capacity_count: "%{count} 個名額"
+  label_community_booking_opening_hour: 開放開始時間
+  label_community_booking_closing_hour: 開放結束時間
+  label_community_booking_remaining: "剩餘 %{count}"
+  label_community_booking_full: 已額滿
+  label_community_booking_closed: 未開放
+  label_community_booking_booked_count: "已預約 %{booked} / %{capacity}"
+  notice_community_booking_created: 預約已建立
+  notice_community_booking_cancelled: 預約已取消
+  button_community_booking_book: 預約
+  text_community_booking_no_facility: 請先建立健身房、交誼廳、腳踏車等公設，並設定每小時可同時使用的數量。
+  text_community_booking_default_description: 選擇日期與時段即可查看剩餘名額並建立預約。
+  text_community_booking_capacity_hint: 例如設定 5 台健身腳踏車，同一小時最多可被預約 5 個名額。

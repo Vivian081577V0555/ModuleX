@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="http://3.34.50.251:8080/">
+<meta charset="utf-8" />
+<title>Module X Digital Process </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="6aqyRQDy8MwIpvjFDh+74CRwrRL2r5F6s3wgj1NBN3+NwX6xtsw6shIhhH0QhSRVU4KxPdcmDgptPs1MF90ZEg==" />
+<link rel='shortcut icon' href='/favicon.ico?1767666301' />
+<link rel="stylesheet" media="all" href="/stylesheets/jquery/jquery-ui-1.13.2.css?1767666302" />
+<link rel="stylesheet" media="all" href="/stylesheets/tribute-5.1.3.css?1767666302" />
+<link rel="stylesheet" href="file:///C:/Users/User/Desktop/ModuleX/modulex_nexus/stylesheets/application.css">
+<link rel="stylesheet" media="all" href="/stylesheets/responsive.css?1767666302" />
+
+<script src="/javascripts/jquery-3.6.1-ui-1.13.2-ujs-6.1.7.6.js?1767666302"></script>
+<script src="/javascripts/tribute-5.1.3.min.js?1767666302"></script>
+<script src="/javascripts/tablesort-5.2.1.min.js?1767666302"></script>
+<script src="/javascripts/tablesort-5.2.1.number.min.js?1767666302"></script>
+<script src="/javascripts/application.js?1767666302"></script>
+<script src="/javascripts/responsive.js?1767666302"></script>
+<script>
+//<![CDATA[
+$(window).on('load', function(){ warnLeavingUnsaved('The current page contains unsaved text that will be lost if you leave this page.'); });
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+rm = window.rm || {};rm.AutoComplete = rm.AutoComplete || {};rm.AutoComplete.dataSources = JSON.parse('{"issues":"/issues/auto_complete?q=","wiki_pages":"/wiki_pages/auto_complete?q="}');
+//]]>
+</script>
+<link rel="stylesheet" media="screen" href="/plugin_assets/redmine_advanced_checklists/stylesheets/style.css?1782121480" />  <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_custom_reminder/stylesheets/custom_reminders.css?1782117890" />   
+<!-- [view customize plugin] path:/ -->
+<link rel="stylesheet" media="screen" href="/plugin_assets/view_customize/stylesheets/view_customize.css?1773581487" /><script type="text/javascript">
+//<![CDATA[
+ViewCustomize = { context: {"user":{"id":4,"login":"","admin":false,"firstname":"","lastname":"Anonymous","mail":null,"lastLoginOn":null,"groups":[],"apiKey":"8ca37e5e604d95f05a2e18c7a95855dd4e3070c7","customFields":[]}} };
+//]]>
+</script>
+<!-- view customize id:3 preview -->
+<script>
+$(function() {
+  if ($('#ultimate-hub').length) return;
+
+  const homeHubHtml = `
+    <main id="ultimate-hub" class="mx-hub">
+      <section class="mx-hub__intro">
+        <div class="mx-hub__eyebrow"><span></span> MODULE X / DIGITAL PROCESS</div>
+        <h2>讓每一次協作<br><strong>都留下清晰軌跡</strong></h2>
+        <p>從需求、研發、製造到客戶回饋，在同一個工作空間掌握決策、責任與交付節奏。</p>
+
+        <div class="mx-hub__actions">
+          <a href="/projects" class="mx-hub-button mx-hub-button--primary">進入專案清單</a>
+          <a href="/my/page" class="mx-hub-button mx-hub-button--secondary">我的工作台</a>
+          <a href="/dmsf" class="mx-hub-button mx-hub-button--secondary">文件管理中心</a>
+        </div>
+
+        <div class="mx-hub__principles">
+          <span><b>FLOW</b> 流程透明</span>
+          <span><b>TRACE</b> 全程可追溯</span>
+          <span><b>ALIGN</b> 跨團隊對齊</span>
+        </div>
+      </section>
+
+      <section class="mx-network" aria-label="Module X process network">
+        <header class="mx-network__header">
+          <div><span class="mx-live-dot"></span> PROCESS NETWORK</div>
+          <small>4 ACTIVE DOMAINS</small>
+        </header>
+
+        <div class="mx-network__canvas">
+          <svg class="mx-network__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="50" y1="50" x2="22" y2="22"></line>
+            <line x1="50" y1="50" x2="78" y2="22"></line>
+            <line x1="50" y1="50" x2="22" y2="78"></line>
+            <line x1="50" y1="50" x2="78" y2="78"></line>
+          </svg>
+
+          <a href="/projects" class="mx-domain mx-domain--rd">
+            <span class="mx-domain__code">RD</span>
+            <span><strong>產品研發</strong><small>R&amp;D / 設計與變更管理</small></span>
+          </a>
+          <a href="/projects" class="mx-domain mx-domain--service">
+            <span class="mx-domain__code">CS</span>
+            <span><strong>客戶服務</strong><small>SERVICE / 售後與客戶回饋</small></span>
+          </a>
+          <a href="/projects" class="mx-domain mx-domain--mfg">
+            <span class="mx-domain__code">MF</span>
+            <span><strong>生產製造</strong><small>MFG / 製程與品質追蹤</small></span>
+          </a>
+          <a href="/projects" class="mx-domain mx-domain--sales">
+            <span class="mx-domain__code">SL</span>
+            <span><strong>銷售推廣</strong><small>SALES / 訂單與市場預測</small></span>
+          </a>
+
+          <div class="mx-network__core" aria-hidden="true">
+            <span>MX</span>
+            <small>CORE</small>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mx-hub__status">
+        <span><i class="mx-live-dot"></i> SYSTEM ONLINE</span>
+        <span>REGION / AP-NORTHEAST</span>
+        <span>WORKSPACE / MODULE X</span>
+        <time class="mx-hub-clock"></time>
+      </footer>
+    </main>`;
+
+  $('#content').html(homeHubHtml);
+});
+
+</script>
+ <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_vote/stylesheets/vote.css?1782111344" /><script src="/plugin_assets/redmine_vote/javascripts/vote.js?1782111344"></script>
+<!-- page specific tags -->
+<link rel="alternate" type="application/atom+xml" title="Module X Digital Process : Latest news" href="http://3.34.50.251:8080/news.atom" />
+<link rel="alternate" type="application/atom+xml" title="Module X Digital Process : Activity" href="http://3.34.50.251:8080/activity.atom" />
+  <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_basics/stylesheets/redmine_basics.css?1774280122" />
+  <script src="/plugin_assets/redmine_basics/javascripts/redmine_basics.js?1774280122"></script>
+<script src="file:///C:/Users/User/Desktop/ModuleX/modulex_nexus/javascripts/theme.js"></script></head>
+<body class="theme-Alternate controller-welcome action-index avatars-off">
+
+<div id="wrapper">
+
+<div class="flyout-menu js-flyout-menu">
+
+        <div class="flyout-menu__search">
+            <form action="/search" accept-charset="UTF-8" name="form-c80b7ae7" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+            
+            <label class="search-magnifier search-magnifier--flyout" for="flyout-search">&#9906;</label>
+            <input type="text" name="q" id="flyout-search" class="small js-search-input" placeholder="Search" />
+</form>        </div>
+
+
+
+    <h3>General</h3>
+    <span class="js-general-menu"></span>
+
+    <span class="js-sidebar flyout-menu__sidebar"></span>
+
+    <h3>Profile</h3>
+    <span class="js-profile-menu"></span>
+
+</div>
+
+
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a class="login" href="/login">Sign in</a></li><li><a class="register" href="/account/register">Register</a></li></ul>    </div>
+    
+    <ul><li><a class="home" href="/">Home</a></li><li><a class="projects" href="/projects">Projects</a></li><li><a class="projects-treeview" href="/projects_treeview">Projects treeview</a></li><li><a target="_blank" rel="noopener" class="help" href="https://www.redmine.org/guide">Help</a></li></ul></div>
+
+<div id="header">
+
+    <a href="#" class="mobile-toggle-button js-flyout-menu-toggle-button"></a>
+
+    <div id="quick-search">
+        <form action="/search" accept-charset="UTF-8" name="form-cdef4f36" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+        <input type="hidden" name="scope" autocomplete="off" />
+        
+        <label for='q'>
+          <a accesskey="4" href="/search">Search</a>:
+        </label>
+        <input type="text" name="q" id="q" size="20" class="small" accesskey="f" data-auto-complete="true" />
+</form>        <div id="project-jump" class="drdn"><span class="drdn-trigger">Jump to a project...</span><div class="drdn-content"><div class="quick-search"><input type="text" name="q" id="projects-quick-search" value="" class="autocomplete" data-automcomplete-url="/projects/autocomplete.js?jump=welcome" autocomplete="off" /></div><div class="drdn-items projects selection"></div><div class="drdn-items all-projects selection"><a href="/projects?jump=welcome">All Projects</a></div></div></div>
+    </div>
+
+    <h1>Module X Digital Process </h1>
+
+</div>
+
+<div id="main" class="nosidebar">
+    <div id="sidebar">
+        
+        
+    </div>
+
+    <div id="content">
+        
+        <h2>Home</h2>
+
+<div class="splitcontent">
+<div class="splitcontentleft">
+  <div class="wiki">
+    
+  </div>
+  
+</div>
+
+<div class="splitcontentright">
+  
+</div>
+</div>
+
+
+        
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<div id="footer">
+    Powered by <a target="_blank" rel="noopener" href="https://www.redmine.org/">Redmine</a> &copy; 2006-2026 Jean-Philippe Lang
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+
+</div>
+
+
+
+</body>
+</html>

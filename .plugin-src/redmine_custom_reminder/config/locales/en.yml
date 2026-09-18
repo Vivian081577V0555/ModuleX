@@ -1,0 +1,42 @@
+en:
+  mail_custom_reminder_subject: "[Redmine Custom Reminder] %{count} назначенных на Вас задач"
+  label_custom_reminders_plural: 'Custom Reminders'
+  label_custom_reminder_new: "New custom reminder"
+  label_custom_reminder_trigger_definition: "Custom Reminder definition"
+  label_custom_reminders_user_type: 'User defined script'
+  label_reminder_enabled_projects: 'Enabled for projects'
+  label_schedule_custom_reminder: "Schedule email-notification"
+  label_destroy_custom_reminder: "Destroy custom reminder"
+  label_custom_reminder_to_author_and_watchers: "To assignee, author and watchers"
+  label_custom_reminder_import: "Import"
+
+  field_notification_recipient: 'Target group to notify'
+  field_trigger_script: 'Condition for triggering custom reminder'
+  field_user_scope_script: 'Script for generating users scope'
+  field_send_days: "Days to send"
+  field_custom_reminder_file: 'File .yml with exported custom email reminder'
+
+  permission_manage_project_custom_reminders: "Manage project's custom reminders"
+
+  error_custom_reminder_import: 'Error with importing custom reminder'
+
+  notice_custom_reminder_import: 'Custom Reminder successfully imported'
+
+  text_custom_reminder_user_scope_info: "Available variables: issues_list(Array), issues_hash(Hash, key is User object, value issues_list), projects(Array)"
+  text_custom_reminder_trigger_info: "Available variables: issues_list(Array), issues_hash(Hash, key is User object, value issues_list), projects(Array)"
+  text_custom_reminder_trigger_example: |
+    Issue.open.where(project: projects).each do |issue|
+      issues_list << issue if issue.updated_on <= trigger_param.day.until(Date.today)
+    end
+  text_custom_reminder_user_scope_example: |
+    issues_list.each do |issue|
+        if issue.assigned_to.is_a?(User)
+          issues_hash[issue.assigned_to] ||= []
+          	issues_hash[issue.assigned_to] << issue
+        elsif issue.assigned_to.is_a?(Group)
+          issue.assigned_to.users.each do |user|
+          	issues_hash[user] ||= []
+          		issues_hash[user] << issue
+          end
+        end
+    end

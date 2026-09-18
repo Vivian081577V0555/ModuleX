@@ -1,0 +1,29 @@
+<%= error_messages_for @facility %>
+
+<div class="box tabular">
+  <p>
+    <%= f.label :name, l(:field_name) %>
+    <%= f.text_field :name, required: true, size: 50 %>
+  </p>
+  <p>
+    <%= f.label :description, l(:field_description) %>
+    <%= f.text_area :description, rows: 5 %>
+  </p>
+  <p>
+    <%= f.label :capacity, l(:label_community_booking_capacity) %>
+    <%= f.number_field :capacity, min: 1, required: true %>
+    <em class="info"><%= l(:text_community_booking_capacity_hint) %></em>
+  </p>
+  <p>
+    <%= f.label :opening_hour, l(:label_community_booking_opening_hour) %>
+    <%= f.select :opening_hour, (0..23).map { |hour| [format('%02d:00', hour), hour] } %>
+  </p>
+  <p>
+    <%= f.label :closing_hour, l(:label_community_booking_closing_hour) %>
+    <%= f.select :closing_hour, (1..24).map { |hour| [format('%02d:00', hour), hour] } %>
+  </p>
+  <p>
+    <%= f.label :active, l(:field_active) %>
+    <%= f.check_box :active %>
+  </p>
+</div>

@@ -1,0 +1,1804 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Welcome_My-Home - Module X Digital Process </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="lZ7ata0fZN7E5VIZ/Tslc3gpY7ZaQ4V1+5xcm9wgrG3rVc+tf7QzCL6kR59v2kHKcbUNvusO9s+ZTAsIseQ1NQ==" />
+<link rel='shortcut icon' href='/favicon.ico?1767666301' />
+<link rel="stylesheet" media="all" href="/stylesheets/jquery/jquery-ui-1.13.2.css?1767666302" />
+<link rel="stylesheet" media="all" href="/stylesheets/tribute-5.1.3.css?1767666302" />
+<link rel="stylesheet" media="all" href="/themes/community_saas/stylesheets/application.css?1782277686" />
+<link rel="stylesheet" media="all" href="/stylesheets/responsive.css?1767666302" />
+
+<script src="/javascripts/jquery-3.6.1-ui-1.13.2-ujs-6.1.7.6.js?1767666302"></script>
+<script src="/javascripts/tribute-5.1.3.min.js?1767666302"></script>
+<script src="/javascripts/tablesort-5.2.1.min.js?1767666302"></script>
+<script src="/javascripts/tablesort-5.2.1.number.min.js?1767666302"></script>
+<script src="/javascripts/application.js?1767666302"></script>
+<script src="/javascripts/responsive.js?1767666302"></script>
+<script>
+//<![CDATA[
+$(window).on('load', function(){ warnLeavingUnsaved('The current page contains unsaved text that will be lost if you leave this page.'); });
+//]]>
+</script>
+<script src="/themes/community_saas/javascripts/theme.js?1782272197"></script>
+<script>
+//<![CDATA[
+rm = window.rm || {};rm.AutoComplete = rm.AutoComplete || {};rm.AutoComplete.dataSources = JSON.parse('{"issues":"/issues/auto_complete?project_id=my-home\u0026q=","wiki_pages":"/wiki_pages/auto_complete?project_id=my-home\u0026q="}');
+//]]>
+</script>
+<link rel="stylesheet" media="screen" href="/plugin_assets/redmine_advanced_checklists/stylesheets/style.css?1782287134" />  <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_custom_reminder/stylesheets/custom_reminders.css?1782117890" />   
+<!-- [view customize plugin] path:/projects/my-home/community-booking -->
+<link rel="stylesheet" media="screen" href="/plugin_assets/view_customize/stylesheets/view_customize.css?1773581487" /><script type="text/javascript">
+//<![CDATA[
+ViewCustomize = { context: {"user":{"id":17,"login":"booking_demo_tester","admin":false,"firstname":"Booking","lastname":"Tester","mail":"booking_demo_tester@example.com","lastLoginOn":"2026-06-24T07:47:42Z","groups":[],"apiKey":"9dce9824aeaeaff3b19e44c19f73e6c4f4d3d70b","customFields":[]},"project":{"id":42,"identifier":"my-home","name":"Welcome_My-Home","roles":[{"id":3,"name":"管理人員"}],"customFields":[]}} };
+//]]>
+</script>
+
+
+<!-- page specific tags -->
+  <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_community_booking/stylesheets/community_booking.css?1782287122" />
+  <link rel="stylesheet" media="screen" href="/plugin_assets/redmine_basics/stylesheets/redmine_basics.css?1774280122" />
+  <script src="/plugin_assets/redmine_basics/javascripts/redmine_basics.js?1774280122"></script>
+</head>
+<body class="theme-Community saas project-my-home has-main-menu controller-community_booking_facilities action-index avatars-off">
+
+<div id="wrapper">
+
+<div class="flyout-menu js-flyout-menu">
+
+        <div class="flyout-menu__search">
+            <form action="/projects/my-home/search" accept-charset="UTF-8" name="form-f6853cd9" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+            
+            <label class="search-magnifier search-magnifier--flyout" for="flyout-search">&#9906;</label>
+            <input type="text" name="q" id="flyout-search" class="small js-search-input" placeholder="Search" />
+</form>        </div>
+
+        <div class="flyout-menu__avatar flyout-menu__avatar--no-avatar">
+            <a class="user active" href="/users/17">booking_demo_tester</a>
+        </div>
+
+        <h3>Project</h3>
+        <span class="js-project-menu"></span>
+
+    <h3>General</h3>
+    <span class="js-general-menu"></span>
+
+    <span class="js-sidebar flyout-menu__sidebar"></span>
+
+    <h3>Profile</h3>
+    <span class="js-profile-menu"></span>
+
+</div>
+
+
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a class="my-account" href="/my/account">My account</a></li><li><a class="logout" rel="nofollow" data-method="post" href="/logout">Sign out</a></li></ul>    </div>
+    <div id="loggedas">Logged in as <a class="user active" href="/users/17">booking_demo_tester</a></div>
+    <ul><li><a class="home" href="/">Home</a></li><li><a class="my-page" href="/my/page">My page</a></li><li><a class="projects" href="/projects">Projects</a></li><li><a class="projects-treeview" href="/projects_treeview">Projects treeview</a></li><li><a target="_blank" rel="noopener" class="help" href="https://www.redmine.org/guide">Help</a></li></ul></div>
+
+<div id="header">
+
+    <a href="#" class="mobile-toggle-button js-flyout-menu-toggle-button"></a>
+
+    <div id="quick-search">
+        <form action="/projects/my-home/search" accept-charset="UTF-8" name="form-b5632ef2" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+        <input type="hidden" name="scope" autocomplete="off" />
+        
+        <label for='q'>
+          <a accesskey="4" href="/projects/my-home/search">Search</a>:
+        </label>
+        <input type="text" name="q" id="q" size="20" class="small" accesskey="f" data-auto-complete="true" />
+</form>        <div id="project-jump" class="drdn"><span class="drdn-trigger">Welcome_My-Home</span><div class="drdn-content"><div class="quick-search"><input type="text" name="q" id="projects-quick-search" value="" class="autocomplete" data-automcomplete-url="/projects/autocomplete.js?jump=community_booking_facilities" autocomplete="off" /></div><div class="drdn-items projects selection"><strong>Recently used</strong><a title="Welcome_My-Home" class="selected" href="/projects/my-home?jump=community_booking_facilities"><span style="padding-left:0px;">Welcome_My-Home</span></a><strong>All Projects</strong><a title="Welcome_My-Home" class="selected" href="/projects/my-home?jump=community_booking_facilities"><span style="padding-left:0px;">Welcome_My-Home</span></a></div><div class="drdn-items all-projects selection"><a href="/projects?jump=community_booking_facilities">All Projects</a></div></div></div>
+    </div>
+
+    <h1><span class="current-project">Welcome_My-Home</span></h1>
+
+    <div id="main-menu" class="tabs">
+        <ul><li>
+<a onclick="toggleNewObjectDropdown(); return false;" id="new-object" class="new-object" href="#"> + </a>
+<ul class="menu-children"><li><a accesskey="7" class="new-issue-sub" href="/projects/my-home/issues/new">New issue</a></li><li><a class="new-issue-category" href="/projects/my-home/issue_categories/new">New category</a></li><li><a class="new-version" href="/projects/my-home/versions/new">New version</a></li><li><a class="new-timelog" href="/projects/my-home/time_entries/new">Log time</a></li><li><a class="new-news" href="/projects/my-home/news/new">Add news</a></li><li><a class="new-wiki-page" href="/projects/my-home/wiki/new">New wiki page</a></li></ul>
+</li><li><a class="overview" href="/projects/my-home">Overview</a></li><li><a class="activity" href="/projects/my-home/activity">Activity</a></li><li><a class="community-polls" href="/projects/my-home/community-polls">Vote</a></li><li><a class="issues" href="/projects/my-home/issues">Issues</a></li><li><a class="time-entries" href="/projects/my-home/time_entries">Spent time</a></li><li><a class="gantt" href="/projects/my-home/issues/gantt">Gantt</a></li><li><a class="calendar" href="/projects/my-home/issues/calendar">Calendar</a></li><li><a class="news" href="/projects/my-home/news">News</a></li><li><a class="wiki" href="/projects/my-home/wiki">Wiki</a></li><li><a class="boards" href="/projects/my-home/boards">Forums</a></li><li><a class="community-booking" href="/projects/my-home/community-booking">Facility Booking</a></li><li><a class="community-finance" href="/projects/my-home/community-finance">Finance</a></li><li><a class="settings" href="/projects/my-home/settings">Settings</a></li></ul>
+        <div class="tabs-buttons" style="display:none;">
+            <button class="tab-left" onclick="moveTabLeft(this); return false;"></button>
+            <button class="tab-right" onclick="moveTabRight(this); return false;"></button>
+        </div>
+    </div>
+</div>
+
+<div id="main" class="nosidebar">
+    <div id="sidebar">
+        
+        
+    </div>
+
+    <div id="content">
+        
+        
+<div class="contextual">
+    <a class="icon icon-add" href="/projects/my-home/community-booking/new">New facility</a>
+</div>
+
+<h2>Facility Booking</h2>
+
+  <div class="community-booking-toolbar">
+    <form class="community-booking-filter" action="/projects/my-home/community-booking" accept-charset="UTF-8" name="form-b1364965" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" />
+      <label>Start date</label>
+      <input type="date" name="date" id="date" value="2026-06-24" max="9999-12-31" onchange="this.form.submit()" />
+</form>
+      <div class="community-booking-actions">
+        <a class="button" href="/projects/my-home/community-booking/new">New facility</a>
+      </div>
+  </div>
+
+  <nav class="community-booking-days" aria-label="Calendar">
+      <a class="community-booking-day " href="/projects/my-home/community-booking?date=2026-06-21">
+        <small>Sun</small>
+        <strong>21</strong>
+        <span>06/21</span>
+</a>      <a class="community-booking-day " href="/projects/my-home/community-booking?date=2026-06-22">
+        <small>Mon</small>
+        <strong>22</strong>
+        <span>06/22</span>
+</a>      <a class="community-booking-day " href="/projects/my-home/community-booking?date=2026-06-23">
+        <small>Tue</small>
+        <strong>23</strong>
+        <span>06/23</span>
+</a>      <a class="community-booking-day is-active" href="/projects/my-home/community-booking?date=2026-06-24">
+        <small>Wed</small>
+        <strong>24</strong>
+        <span>06/24</span>
+</a>      <a class="community-booking-day " href="/projects/my-home/community-booking?date=2026-06-25">
+        <small>Thu</small>
+        <strong>25</strong>
+        <span>06/25</span>
+</a>      <a class="community-booking-day " href="/projects/my-home/community-booking?date=2026-06-26">
+        <small>Fri</small>
+        <strong>26</strong>
+        <span>06/26</span>
+</a>      <a class="community-booking-day " href="/projects/my-home/community-booking?date=2026-06-27">
+        <small>Sat</small>
+        <strong>27</strong>
+        <span>06/27</span>
+</a>  </nav>
+
+  <div class="community-booking-facility-cards">
+      <section class="community-booking-facility-card">
+        <div>
+          <span>Facility</span>
+          <h3>交誼廳</h3>
+          <p>每小時一組住戶使用，適合住戶聚會與小型活動。</p>
+        </div>
+        <div class="community-booking-capacity">
+          <small>Capacity</small>
+          <strong>1 slots</strong>
+          <span>09:00-21:00</span>
+        </div>
+          <a class="community-booking-edit-link" href="/projects/my-home/community-booking/5/edit">Edit</a>
+      </section>
+      <section class="community-booking-facility-card">
+        <div>
+          <span>Facility</span>
+          <h3>健身腳踏車</h3>
+          <p>每個時段以 1 小時為單位，同一時間最多 5 台可預約。</p>
+        </div>
+        <div class="community-booking-capacity">
+          <small>Capacity</small>
+          <strong>5 slots</strong>
+          <span>08:00-22:00</span>
+        </div>
+          <a class="community-booking-edit-link" href="/projects/my-home/community-booking/4/edit">Edit</a>
+      </section>
+      <section class="community-booking-facility-card">
+        <div>
+          <span>Facility</span>
+          <h3>游泳池</h3>
+          <p>每個時段以 1 小時為單位，同一時間最多 5 台可預約。</p>
+        </div>
+        <div class="community-booking-capacity">
+          <small>Capacity</small>
+          <strong>30 slots</strong>
+          <span>08:00-22:00</span>
+        </div>
+          <a class="community-booking-edit-link" href="/projects/my-home/community-booking/1/edit">Edit</a>
+      </section>
+      <section class="community-booking-facility-card">
+        <div>
+          <span>Facility</span>
+          <h3>瑜珈教室</h3>
+          <p>同一時段最多 2 組使用，可用於伸展、瑜珈與課程活動。</p>
+        </div>
+        <div class="community-booking-capacity">
+          <small>Capacity</small>
+          <strong>2 slots</strong>
+          <span>07:00-20:00</span>
+        </div>
+          <a class="community-booking-edit-link" href="/projects/my-home/community-booking/6/edit">Edit</a>
+      </section>
+      <section class="community-booking-facility-card">
+        <div>
+          <span>Facility</span>
+          <h3>腳踏車</h3>
+          <p>Select a date and hour to view remaining capacity and create a booking.</p>
+        </div>
+        <div class="community-booking-capacity">
+          <small>Capacity</small>
+          <strong>5 slots</strong>
+          <span>08:00-22:00</span>
+        </div>
+          <a class="community-booking-edit-link" href="/projects/my-home/community-booking/2/edit">Edit</a>
+      </section>
+      <section class="community-booking-facility-card">
+        <div>
+          <span>Facility</span>
+          <h3>腳踏車</h3>
+          <p>test</p>
+        </div>
+        <div class="community-booking-capacity">
+          <small>Capacity</small>
+          <strong>5 slots</strong>
+          <span>08:00-22:00</span>
+        </div>
+          <a class="community-booking-edit-link" href="/projects/my-home/community-booking/3/edit">Edit</a>
+      </section>
+  </div>
+
+  <div class="community-booking-calendar-wrap">
+    <table class="community-booking-calendar">
+      <thead>
+        <tr>
+          <th class="community-booking-time-col">Time</th>
+            <th>
+              <strong>交誼廳</strong>
+              <span>1 slots</span>
+            </th>
+            <th>
+              <strong>健身腳踏車</strong>
+              <span>5 slots</span>
+            </th>
+            <th>
+              <strong>游泳池</strong>
+              <span>30 slots</span>
+            </th>
+            <th>
+              <strong>瑜珈教室</strong>
+              <span>2 slots</span>
+            </th>
+            <th>
+              <strong>腳踏車</strong>
+              <span>5 slots</span>
+            </th>
+            <th>
+              <strong>腳踏車</strong>
+              <span>5 slots</span>
+            </th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>07:00</strong>
+              <span>08:00</span>
+            </th>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-1554ca4c" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="mmPnwuNqmO6jBv4mTGXkC1Qp1yncWu1qeabRGv2IzSPkqPLaMcHPONlH66DehICyXbW5IW0XntAbdoaJkExUew==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="7" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>08:00</strong>
+              <span>09:00</span>
+            </th>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-8365fcf8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="hjJNMrQmhgrhAWT0gvY7pg4KTEwPsvJtG2XzY62wlhn4+VgqZo3R3JtAcXIQF18fB5YiRL7/gdd5taTwwHQPQQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="8" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>29 left</em>
+                    <span>1 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 3%"></span>
+                  </div>
+
+                    <ul class="community-booking-list">
+                        <li>
+                          <span>Booking Tester &times; 1</span>
+                            <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/projects/my-home/community-booking/1/bookings/1">Cancel</a>
+                        </li>
+                    </ul>
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-9876560a" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="GRD7P9OpsmgQ9Dd5QA1whOw7txgnptQT3GlcUi4P4wtn2+4nAQLlvmq1Iv/S7BQ95afZEJbrp6m+uQvBQ8t6Uw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="8" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="29" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-911a91b9" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="YW7kgOQJ6qnOD71A4Qu94MvuBe2xZy01ujLBn8na37MfpfGYNqK9f7ROqMZz6tlZwnJr5QAqXo/Y4pYMpB5G6w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="8" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-b2b2feef" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="BkJrPkgdUEx6cuUUtWg5knQjwf8gJMV18dEWs3tAUdh4iX4mmrYHmgAz8JIniV0rfb+v95Fpts+TAUEgFoTIgA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="8" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-8568e9f8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="1mL0fuLzvZaaNd+TZikmNKvgcgT3kB4kBQqp+fAVuAWoqeFmMFjqQOB0yhX0yEKNonwcDEbdbZ5n2v5qndEhXQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="8" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>09:00</strong>
+              <span>10:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-a264ca2a" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="zvvgISQ/6H7LBBqtF7N2q+KVoDGBladyzWgL3NK+7E6wMPU59pS/qLFFDyuFUhIS6wnOOTDY1MivuFxPv3p1Fg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="9" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-72db32cd" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="3CY8fsfNRij3+UU/DC83FmBqTqxWsFQh2V/AQzFtPpei7SlmFWYR/o24ULmezlOvafYgpOf9J5u7j5fQXKmnzw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="9" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-f8b22836" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="uXfejqGkf5vDhrvLn6iJlAlo3JlgWfx4dYE1DHLb8vHHvMuWcw8oTbnHrk0NSe0tAPSykdEUj8IXUWKfHx9rqQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="9" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-0eb53b26" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="ynJgzUSq72WfmdAoG/OJhB5/NrDGOdlYbuW/MxgeB1+0uXXVlgG4s+XYxa6JEu09F+NYuHd0quIMNeigddqeBw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="9" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-8025717f" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="B8Zvz40YOI1KH1EUzQYBX6I5C08ZezJ4H8BTCLcsZkB5DXrXX7NvWzBeRJJf52Xmq6VlR6g2QcJ9EASb2uj/GA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="9" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-04bb71f6" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="UxXUdGvLIUcUnMTqhTeUeCwDfXoQS+I8rzB0ry5m778t3sFsuWB2kW7d0WwX1vDBJZ8TcqEGkYbN4CM8Q6J25w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="9" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>10:00</strong>
+              <span>11:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-15f3e09d" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="+3o5WJ0XamDRXcZhCC9hKIvzi5FoBNVb4xO1Sau6BJ2FsSxAT7w9tqsc0+eazgWRgm/lmdlJpuGBw+Laxn6dxQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="10" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-33deb5d4" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="c5hvBoCs6iCUmSDb9z/A2y3d4xW3semVnyAEuzTJTp0NU3oeUge99u7YNV1l3qRiJEGNHQb8mi/98FMoWQ3XxQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="10" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-913d3784" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="8fVEXaKZkIrpuzcUwDDnZHkDMTKvWfrBL2EY4T9doJCPPlFFcDLHXJP6IpJS0YPdcJ9fOh4UiXtNsU9yUpk5yA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="10" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-bc3a6c74" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="DZLz2iXqS/3akpTX2GgrjKaa4YXxc0QKzWhdIOqep7lzWebC90EcK6DTgVFKiU81rwaPjUA+N7CvuAqzh1o+4Q==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="10" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-e78a05bd" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="DGtbjMcbLH7EIoBUlw4V+RE1PrWmINN71bnmOKJrqrByoE6UFbB7qL5jldIF73FAGKlQvRdtoMG3abGrz68z6A==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="10" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-2c432548" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="CwWCP5o1+ll6DH9JQtzSJGRlzY02qhFipa6SiTLIW1Z1zpcnSJ6tjwBNas/QPbadbfmjhYfnYtjHfsUaXwzCDg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="10" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>11:00</strong>
+              <span>12:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-83dd53d4" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="mMCyc6yDvX0ERvYiZcslS6XOafKTG5h0HdqzW503/2PmC6drfijqq34H46T3KkHyrFIH+iJW685/CuTI8PNmOw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="11" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-0d3f8aa3" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="WxFr1gSFaij9XPBzOTTdOyXXiOeZrbjn6Gt3jd1frGEl2n7O1i49/ocd5fWr1bmCLEvm7yjgy12KuyAesJs1OQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="11" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-5abb82a6" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Emg5YT3ujxSmJNezMAzBGq8Q6Dfx1xAozYKSS11GaH5soyx570XYwtxlwjWi7aWjpoyGP0CaY5KvUsXYMILxJg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="11" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-32749570" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="P30JJFq2Luq56wzvNED95x+vvkADSGTNQF2Gd/YHImVBthw8iB15PMOqGWmmoZleFjPQSLIFF3cijdHkm8O7PQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="11" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-331a6e42" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="dQRwZqLm+QSJ4ES/ZEuo8R6bSia8FFkvgKNX99YwKtILz2V+cE2u0vOhUTn2qsxIFwckLg1ZKpXicwBku/Szig==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="11" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-5a3d4299" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="y8mBZbyoFM9824SqijlDnxkX8GLy5a1k7hP8R4Dtii+1ApR9bgNDGQaakSwY2CcmEIueakOo3t6Mw6vU7SkTdw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="11" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>12:00</strong>
+              <span>13:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-6180f490" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="a8jCoot74+jgDVz/Wf2uUujQRuLVSE01Ffoh2eSy9bcVA9e6WdC0PppMSXnLHMrr4Uwo6mQFPo93KnZKiXZs7w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="12" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-bf7310bf" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="7TMKrEIecavrdN9a8l4/FNARylErE9yt1qlur9MZXGqT+B+0kLUmfZE1ytxgv1ut2Y2kWZperxe0eTk8vt3FMg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="12" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-a5680fcc" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="e/hIKH24vzEToiU964uHHcqMkYqwFeEnF8DT4YFpmaAFM10wrxPo52njMLt5auOkwxD/ggFYkp11EIRy7K0A+A==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="12" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-b6fafd36" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="YxXzo8Wuzv4qxVyycisIdEgqB87yUf+Apa7hehEC+2Qd3ua7FwWZKFCESTTgymzNQbZpxkMcjDrHfrbpfMZiPA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="12" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-84cb2f1d" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="ZA5tFzgorHBq73+9JbjpdbmGO+v5Afc8xgQ9h9eKIsAaxXgP6oP7phCuaju3WY3MsBpV40hMhIak1GoUuk67mA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="12" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-995f6e15" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Tle1f/Z04Z/q3T3PY9c9yHQGyRKMbVwlBV4qgtsRSMQwnKBnJN+2SZCcKEnxNllxfZqnGj0gL59njn0RttXRnA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="12" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>13:00</strong>
+              <span>14:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-e1938ea2" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Z1sk3LLQ5FGXqhdGIL3YalTjg3ubVA9bc2hgzkCdSXUZkDHEYHuzh+3rAsCyXLzTXX/tcyoZfOERuDddLVnQLQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="13" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-8693b1cf" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="ZIsURA8tbq0wFyfy6r65XiuT+E1Llac6RzMWg4mcN5waQAFc3YY5e0pWMnR4X93nIg+WRfrY1IAl40EQ5FiuxA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="13" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-41dd276f" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="d4KV0k/UZE2XO6/WWvvuXinsgrUsWoBXwjZq85OsOqwJSYDKnX8zm+16ulDIGornIHDsvZ0X8+2g5j1g/mij9A==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="13" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-913d0bcd" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="RGnePTIUb8EpnD5sdkz6mCOq4od07v4Xn6vwnAfDOkM6ossl4L84F1PdK+rkrZ4hKjaMj8Wjja39e6cPagejGw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="13" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-c7d60547" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="35+UD9VOxuGEvXthOhyLF+09NEnujgVo28PnyzkED8ehVIEXB+WRN/78bueo/e+u5KFaQV/DdtK5E7BYVMCWnw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="13" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-d5281eec" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="/DxqncUdVe3BPbDZQFVkqRTio6zm4NhuZQ8Gc2YZiJyC93+FF7YCO7t8pV/StAAQHX7NpFetq9QH31HgC90RxA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="13" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>14:00</strong>
+              <span>15:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-f53c194c" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="qsy3kbZJL+Nia/IqKEVIuI9izBJiDgG3G6e1czOoO/HUB6KJZOJ4NRgq56y6pCwBhv6iGtNDcg15d+LgXmyiqQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="14" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-3cc373cd" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="87gJaXYF4KUbN/30BD76z617fJZ6cfIIHIbSWbZsm3WNcxxxpK63c2F26HKW3552pOcSnss8gbJ+VoXK26gCLQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="14" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-38b5a881" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="sjGpG7EDjrbqhuKLrrng0oRRL4BiiMAfRWUhe4vr26rM+rwDY6jZYJDH9w08WIRrjc1BiNPFs6UntXbo5i9C8g==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="14" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-c2443d40" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="dgnF60m505xP8zq8y+hduP6VByuGCpp5vr2yIfQ7hEMIwtDzmxKESjWyLzpZCTkB9wlpIzdH6cPcbeWymf8dGw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="14" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-da1333ae" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="LSFIsAG4MGEpembpT3+wzbQIuaZX1a/OlTpWvzRokVBT6l2o0xNnt1M7c2/dntR0vZTXruaY3HT36gEsWawICA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="14" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-c8cb6a2b" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="4ZOKGaLf3uvgJEgpQEr/QtiuTsJIzeoiZTYDDTbPH7KfWJ8BcHSJPZplXa/Sq5v70TIgyvmAmZgH5lSeWwuG6g==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="14" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>15:00</strong>
+              <span>16:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-bfe432cd" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="VUZehlaC+ZTAujOK9G3EdTLX/vX4VfwMoAri83nNpRIrjUuehCmuQrr7JgxmjKDMO0uQ/UkYj7bC2rVgFAk8Sg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="15" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-a78371d1" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Fvv8omwlOZ3GVpDnkc8lA1ia9p00O6TmvqDJTcxVgQloMOm6vo5uS7wXhWEDLkG6UQaYlYV211zccJ7eoZEYUQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="15" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-c2d4b245" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="WauqOT45ZW5cS59D9uE30CGRkPnO2q1Ge5OdrAybOHsnYL8h7JIyuCYKisVkAFNpKA3+8X+X3vwZQ8o/YV+hIw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="15" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-3b01da76" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="fqpXNjY2JIIZip+yQSdf1sgDaMDxXzfXsYawwi5siYYAYUIu5J1zVGPLijTTxjtvwZ8GyEASRG3TVudRQ6gQ3g==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="15" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-4207a826" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Huom6r3Ijo97aCg0UH+wygbdXFj2FcdTAPIkz3QMFYNgITPyb2PZWQEpPbLCntRzD0EyUEdYtOliInNcGciM2w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="15" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-5a8c4db8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="eY17nLQOj3sxlS/pIDjwYRLa7oc4AVoCXLR75aKv88AHRm6EZqXYrUvUOm+y2ZTYG0aAj4lMKbg+ZCx2z2tqmA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="15" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>16:00</strong>
+              <span>17:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-446dff47" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="6DGhvp641K+a5ijRoY0zYweJedi6k8Ob6tblR/WAqp2W+rSmTBODeeCnPVczbFfaDhUX0AvesCGIBrLUmEQzxQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="16" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-b6b92f41" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="j4naOwsYeObv3OVetgEmZfcxwrW5P0Ml9HukV+N2BgzxQs8j2bMvMJWd8Ngk4ELc/q2svQhyMJ+Wq/PEjrKfVA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="16" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-2e0fe451" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="czBkJFaYvZDKRzZNqjjueSrlx18vWrt4kuZqYX96sW4N+3E8hDPqRrAGI8s42YrAI3mpV54XyMLwNj3yEr4oNg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="16" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-0c9b2325" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="vok9TJmWYT4JMy/OozAzshUhCTYe2vI16faBRbLNeQfAQihUSz026HNyOkgx0VcLHL1nPq+XgY+LJtbW3wngXw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="16" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-76e9b24e" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="U/c8DfOeqC9AzoNt7JD93oqx+a1HMImOLj48kJ8ear0tPCkVITX/+TqPlut+cZlngy2XpfZ9+jRM7msD8trz5Q==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="16" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-7e8ada9f" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="lFPzAejM2PRzQsccR7wM4/LUYlstrkeTZYmSmlOK3gLqmOYZOmePIgkD0prVXWha+0gMU5zjNCkHWcUJPk5HWg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="16" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>17:00</strong>
+              <span>18:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-d6c102fc" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="NQJsk9ednpYHly3pR52E8BQ/0qtD5IHxTB2kJ01KW+5LyXmLBTbJQH3WOG/VfOBJHaO8o/Kp8ksuzfO0II7Ctg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="17" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-a178f2df" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="EBaVxs2cGzA2t3bDUjE/COjUbbCf1E7OinMockE84jhu3YDeHzdM5kz2Y0XA0Fux4UgDuC6ZPXToo3/hLPh7YA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="17" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-d81e86b6" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="aRDdDIq8MV/l/Iohrw9ukZTWgGXu0+XA6EDIHWtCGqcX28gUWBdmiZ+9n6c97goonUrubV+elnqKkJ+OBoaD/w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="17" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-60ece7fa" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="um/cSXXu5UsMu4Oafe1p4r230d9zrdI0V9aE9jzakDzEpMlRp0WynXb6lhzvDA1btCu/18LgoY41BtNlUR4JZA==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="17" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-a2c2bd17" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="W3aGqyOXV5kP6tqLcEKEv2T2KYujdDjUjhKUlHyy4I8lvZOz8TwAT3Wrzw3io+AGbWpHgxI5S27swsMHEXZ51w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="17" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-2ed5af51" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="r1lyUtvNta1SrkhNe46jmPO3+HKwAc0WWKzcxQIiNrLRkmdKCWbieyjvXcvpb8ch+iuWegFMvqw6fItWb+av6g==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="17" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>18:00</strong>
+              <span>19:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-9581339d" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="vlxAbYOY51qa1I0fMtI6GzsGLU27PZiukOCfPmEEfjnAl1V1UTOwjOCVmJmgM16iMppDRQpw6xTyMMitDMDnYQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="18" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-d88aafc7" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="e7S8PdnjsJnIsxE/YUawvo+WAgQiWdGiCoE2SYgbNu8Ff6klC0jnT7LyBLnzp9QHhgpsDJMUohhoUWHa5d+vtw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="18" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-3ff88feb" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="+xpz5ObV2YIxybejAw1Y3n+oj1f/VVCLQGwjfTudgX+F0Wb8NH6OVEuIoiWR7DxndjThX04YIzEivHTuVlkYJw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="18" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-dda31e21" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="v2x7ynVBPZ1g8RZ4Bu3ycghy+VLvP/ScPTwjmny7S+vBp27Sp+pqSxqwA/6UDJbLAe6XWl5yhyZf7HQJEX/Ssw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="18" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-3fcd30db" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="jeltz2kIeeUpg+8284c6MqFrI+dpCTtJCKbPxjJqoTLzInjXu6MuM1PC+rBhZl6LqPdN79hESPNqdphVX644ag==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="18" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-e3e08531" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="eV7InOT04jWxVJGioMKRmF8FAb8vWyCdJooHhxs8q4oHld2ENl+148sVhCQyI/UhVplvt54WUydEWlAUdvgy0g==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="18" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>19:00</strong>
+              <span>20:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-3fcc4acb" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Zg9fDTvhpLfeYucUx12k7HWa0F3Auv0HMNLvQ2DEmNUYxEoV6UrzYaQj8pJVvMBVfAa+VXH3jr1SArjQDQABjQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="19" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-28531e2f" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="EBUr+ERE8KSpu7pgIXNwjb2PvxIn+qyWRKYwN1YaILNu3j7glu+nctP6r+azkhQ0tBPRGpa33ywmdmekO9656w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="19" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-974fb72a" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="dDxUjcPPformFgP27FXG6FyrANev06JJSQOZlAGLm/YK90GVEWQpXJxXFnB+tKJRVTdu3x6e0fMr084HbE8Crg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="19" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>2 left</em>
+                    <span>0 / 2 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/6/bookings" accept-charset="UTF-8" name="form-f1a2f424" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="lOyOohcz62GROoT5gFy03UXtA93iXrGT3lPe6dIiC6fqJ5u6xZi8t+t7kX8SvdBkTHFt1VMTwim8g4l6v+aS/w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="19" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="2" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-9f6f3102" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="rGLRo54jViS+8jDWWxPQD5k0ETm2b2mfWLS2392G7BvSqcS7TIgB8sSzJVDJ8rS2kKh/MQciGiU6ZOFMsEJ1Qw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="19" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-ec17ba4a" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="8cJsB1MBH4L8VA2Efd4+RpmlKCDu1RPQOe7e/T2epLePCXkfgapIVIYVGALvP1r/kDlGKF+YYGpbPoluUFo97w==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="19" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>20:00</strong>
+              <span>21:00</span>
+            </th>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>1 left</em>
+                    <span>0 / 1 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/5/bookings" accept-charset="UTF-8" name="form-6fea1cc6" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="zfPHNCb21ax0ZB1ZJZVIsZ6HFUqnRudYz8Ulg0xJiuqzONIs9F2Ceg4lCN+3dCwIlxt7QhYLlOKtFXIQIY0Tsg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="20" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="1" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-fe0b5cf1" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="wrUzUkvKnrpg52rB/K+kQ+H6XjG7moOvyVrRgTTv2QK8fiZKmWHJbBqmf0duTsD66GYwOQrX8BWrioYSWStAWg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="20" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-45ff63ac" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="oLTEuS3iE6h5NgrY20Jf0N96xCj2gJ0/nRk6YVSl81fef9Gh/0lEfgN3H15Joztp1uaqIEfN7oX/yW3yOWFqDw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="20" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-6af9c728" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="GH7YVuOHFdDYDAYIc3eugMgmfv4yGcId+nQO9hhNuEFmtc1OMSxCBqJNE47hlso5wboQ9oNUsaeYpFlldYkhGQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="20" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-259cb829" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="z4d0o+gcavx8Tt0zOEB/eMspEvEYrajNcNoG4bojOqSxTGG7Orc9KgYPyLWqoRvBwrV8+ang23cSClFy1+ej/A==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="20" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+          <tr>
+            <th class="community-booking-time-col">
+              <strong>21:00</strong>
+              <span>22:00</span>
+            </th>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/4/bookings" accept-charset="UTF-8" name="form-cf26c072" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="EpQ9Q42H7/lQB2pYzfEfPQsgmmYpCXi6auXmRlI4q21sXyhbXyy4LypGf95fEHuEArz0bphECwAINbHVP/wyNQ==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="21" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>30 left</em>
+                    <span>0 / 30 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/1/bookings" accept-charset="UTF-8" name="form-b1424ec1" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="wEOTouZ9+3/jQhLTSLt2YB2Xp9W0Y4ktwfc9L3rMfEK+iIa6NNasqZkDB1XaWhLZFAvJ3QUu+pejJ2q8FwjlGg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="21" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="30" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-closed">
+                  <span class="community-booking-closed">Closed</span>
+              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/2/bookings" accept-charset="UTF-8" name="form-e7c28c07" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Pcqh4ccrWBrOnGqa3j/olIISciR4e6qvXXLIIVzHWS5DAbT5FYAPzLTdfxxM3owti44cLMk22RU/op+yMQPAdg==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="21" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+              <td class="is-available">
+                  <div class="community-booking-cell-status">
+                    <em>5 left</em>
+                    <span>0 / 5 booked</span>
+                  </div>
+
+                  <div class="community-booking-meter">
+                    <span style="width: 0%"></span>
+                  </div>
+
+
+                    <form class="community-booking-book-form" action="/projects/my-home/community-booking/3/bookings" accept-charset="UTF-8" name="form-9008fd96" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="N6JtKefpWVGV9gnjKFL6FiFk5Fy6YYQ1HzP3Mgb3l9dJaXgxNUIOh++3HGW6s56vKPiKVAss949946ChazMOjw==" autocomplete="off" />
+                      <input type="hidden" name="date" id="date" value="2026-06-24" autocomplete="off" />
+                      <input type="hidden" name="hour" id="hour" value="21" autocomplete="off" />
+                      <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" />
+                      <input type="submit" name="commit" value="Book" data-disable-with="Book" />
+</form>              </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+        
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<div id="footer">
+    Powered by <a target="_blank" rel="noopener" href="https://www.redmine.org/">Redmine</a> &copy; 2006-2026 Jean-Philippe Lang
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+
+</div>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,8 @@
+﻿W, [2026-06-25T05:40:30.692309 #713]  WARN -- : Creating scope :system. Overwriting existing method Enumeration.system.
+W, [2026-06-25T05:40:30.925770 #713]  WARN -- : Creating scope :sorted. Overwriting existing method User.sorted.
+W, [2026-06-25T05:40:32.616246 #713]  WARN -- : Creating scope :sorted. Overwriting existing method Group.sorted.
+h1. 社區服務 Dashboard Demo
+
+<div id="resident-dashboard-demo">Dashboard loading...</div>
+
+資料來源：Demo 投票、Demo 財務帳本、Demo 報修議題與附件。
