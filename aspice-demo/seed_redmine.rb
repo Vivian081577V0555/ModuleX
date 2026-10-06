@@ -3,6 +3,8 @@
 # Run inside the Redmine container with:
 #   bundle exec rails runner /tmp/seed_redmine.rb
 
+require "securerandom"
+
 SOURCE_COMMIT = ENV.fetch("ASOURCE_COMMIT", "736f3801e02d2a993b509684c405654892261da0")
 SOURCE_REPOSITORY = "https://github.com/Vivian081577V0555/ModuleX"
 
@@ -57,6 +59,10 @@ verification_project = ensure_project(
   description: "SYS.4, SYS.5, SWE.4, SWE.5, and SWE.6 verification work products.",
   parent: root_project
 )
+
+requirements_project.enabled_module_names = (
+  requirements_project.enabled_module_names + %w[dmsf aspice_document_control]
+).uniq
 
 def ensure_tracker(name, description, default_status)
   tracker = Tracker.find_or_initialize_by(name: name)
@@ -144,10 +150,30 @@ end
 
 roles = {
   requirement_author: ensure_role("ASPICE Requirement Author", developer_permissions),
+  technical_reviewer: ensure_role("ASPICE Technical Reviewer", observer_permissions),
   verification_engineer: ensure_role("ASPICE Verification Engineer", developer_permissions),
   process_qa: ensure_role("ASPICE Process QA", developer_permissions),
-  observer: ensure_role("ASPICE Observer", observer_permissions)
+  observer: ensure_role("ASPICE Observer", observer_permissions),
+  document_controller: ensure_role("ASPICE Document Controller", observer_permissions)
 }
+
+dmsf_read_permissions = %i[
+  view_dmsf_file_revision_accesses view_dmsf_file_revisions
+  view_dmsf_folders view_dmsf_files view_aspice_document_control
+]
+roles[:requirement_author].permissions |= dmsf_read_permissions + %i[
+  file_manipulation folder_manipulation file_approval submit_aspice_documents
+]
+roles[:technical_reviewer].permissions |= dmsf_read_permissions + %i[
+  file_approval approve_aspice_documents
+]
+roles[:process_qa].permissions |= dmsf_read_permissions + %i[
+  file_approval approve_aspice_documents
+]
+roles[:document_controller].permissions |= dmsf_read_permissions + %i[
+  file_approval approve_aspice_documents force_file_unlock manage_workflows
+]
+roles.values.each(&:save!)
 
 def ensure_group(name)
   group = Group.find_or_initialize_by(lastname: name)
@@ -159,12 +185,60 @@ groups = {
   requirements: ensure_group("ASPICE Requirement Team"),
   verification: ensure_group("ASPICE Verification Team"),
   process_qa: ensure_group("ASPICE Process QA Team"),
+  technical_review: ensure_group("ASPICE Technical Review Team"),
+  document_control: ensure_group("ASPICE Document Control Team"),
   sys4: ensure_group("ASPICE SYS.4 Team"),
   sys5: ensure_group("ASPICE SYS.5 Team"),
   swe4: ensure_group("ASPICE SWE.4 Team"),
   swe5: ensure_group("ASPICE SWE.5 Team"),
   swe6: ensure_group("ASPICE SWE.6 Team")
 }
+
+def ensure_demo_user(login:, firstname:, lastname:, mail:, password_env:)
+  user = User.find_or_initialize_by(login: login)
+  if user.new_record?
+    password = ENV[password_env].presence || SecureRandom.base58(24)
+    user.password = password
+    user.password_confirmation = password
+  end
+  user.firstname = firstname
+  user.lastname = lastname
+  user.mail = mail
+  user.status = User::STATUS_ACTIVE
+  user.language = "en"
+  user.must_change_passwd = false if user.respond_to?(:must_change_passwd=)
+  user.save!
+  user
+end
+
+demo_users = {
+  author: ensure_demo_user(
+    login: "aspice.author", firstname: "ASPICE", lastname: "Document Author",
+    mail: "aspice.author@example.invalid", password_env: "ASPICE_AUTHOR_PASSWORD"
+  ),
+  technical_reviewer: ensure_demo_user(
+    login: "aspice.techreview", firstname: "Technical", lastname: "Reviewer",
+    mail: "aspice.techreview@example.invalid", password_env: "ASPICE_TECH_REVIEWER_PASSWORD"
+  ),
+  process_qa: ensure_demo_user(
+    login: "aspice.qa", firstname: "ASPICE", lastname: "Process QA",
+    mail: "aspice.qa@example.invalid", password_env: "ASPICE_QA_PASSWORD"
+  ),
+  document_controller: ensure_demo_user(
+    login: "aspice.doccontrol", firstname: "Document", lastname: "Controller",
+    mail: "aspice.doccontrol@example.invalid", password_env: "ASPICE_DOCUMENT_CONTROL_PASSWORD"
+  )
+}
+
+{
+  requirements: demo_users[:author],
+  technical_review: demo_users[:technical_reviewer],
+  process_qa: demo_users[:process_qa],
+  document_control: demo_users[:document_controller]
+}.each do |group_key, user|
+  group = groups.fetch(group_key)
+  group.users << user unless group.users.exists?(user.id)
+end
 
 def ensure_membership(project, principal, role)
   member = Member.find_or_initialize_by(project: project, principal: principal)
@@ -173,6 +247,8 @@ def ensure_membership(project, principal, role)
 end
 
 ensure_membership(requirements_project, groups[:requirements], roles[:requirement_author])
+ensure_membership(requirements_project, groups[:technical_review], roles[:technical_reviewer])
+ensure_membership(requirements_project, groups[:document_control], roles[:document_controller])
 ensure_membership(verification_project, groups[:requirements], roles[:observer])
 ensure_membership(requirements_project, groups[:verification], roles[:observer])
 ensure_membership(verification_project, groups[:verification], roles[:verification_engineer])
@@ -182,6 +258,46 @@ groups.values_at(:sys4, :sys5, :swe4, :swe5, :swe6).each do |group|
   ensure_membership(requirements_project, group, roles[:observer])
   ensure_membership(verification_project, group, roles[:verification_engineer])
 end
+
+controlled_folder = DmsfFolder.find_or_initialize_by(
+  project_id: requirements_project.id,
+  dmsf_folder_id: nil,
+  title: "ASPICE Controlled Documents"
+)
+controlled_folder.description = "Working and released ASPICE documents. Use Document Control views to filter by status."
+controlled_folder.notification = false
+controlled_folder.user_id = admin.id
+controlled_folder.deleted = false
+controlled_folder.save!
+
+approval_workflow = DmsfWorkflow.find_or_initialize_by(
+  project_id: requirements_project.id,
+  name: "ASPICE Controlled Document Approval"
+)
+approval_workflow.author = admin
+approval_workflow.status = DmsfWorkflow::STATUS_ACTIVE
+approval_workflow.save!
+
+approval_steps = [
+  [1, "Technical Review", demo_users[:technical_reviewer]],
+  [2, "ASPICE QA Review", demo_users[:process_qa]],
+  [3, "Document Control Release", demo_users[:document_controller]]
+]
+approval_steps.each do |step_number, step_name, approver|
+  step = DmsfWorkflowStep.find_or_initialize_by(
+    dmsf_workflow_id: approval_workflow.id,
+    step: step_number
+  )
+  step.name = step_name
+  step.user = approver
+  step.operator = DmsfWorkflowStep::OPERATOR_OR
+  step.save!
+end
+
+Setting.plugin_redmine_dmsf = Setting.plugin_redmine_dmsf.to_h.merge(
+  "dmsf_keep_documents_locked" => "1",
+  "only_approval_zero_minor_version" => "0"
+)
 
 def ensure_custom_field(name:, format:, trackers:, projects:, description:, possible_values: nil, required: false)
   field = IssueCustomField.find_or_initialize_by(name: name)
@@ -629,6 +745,9 @@ puts "CUSTOM_FIELDS=#{fields.values.map(&:name).join(',')}"
 puts "TREE_VIEW_DEFAULT=#{Setting.plugin_redmine_issues_tree['default_redirect_to_tree_view']}"
 puts "SAVED_QUERIES=#{IssueQuery.where(project_id: [requirements_project.id, verification_project.id]).count}"
 puts "WIKI_START_PAGE=#{wiki.start_page}"
+puts "DMSF_WORKFLOW=#{approval_workflow.name}:#{approval_workflow.dmsf_workflow_steps.count}_steps"
+puts "DMSF_FOLDER=#{controlled_folder.title}"
+puts "DMSF_DEMO_USERS=#{demo_users.values.map(&:login).join(',')}"
 puts "ISSUES=#{Issue.where(project_id: [requirements_project.id, verification_project.id]).count}"
 puts "RELATIONS=#{IssueRelation.count}"
 puts "SOURCE_COMMIT=#{SOURCE_COMMIT}"

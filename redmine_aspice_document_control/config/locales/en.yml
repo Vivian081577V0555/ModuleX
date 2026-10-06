@@ -1,0 +1,5 @@
+en:
+  project_module_aspice_document_control: "Document Control"
+  permission_view_aspice_document_control: "View document control"
+  permission_submit_aspice_documents: "Submit controlled documents"
+  permission_approve_aspice_documents: "Approve controlled documents"

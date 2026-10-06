@@ -1,0 +1,83 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "aspice_document_control", plugin: :redmine_aspice_document_control %>
+<% end %>
+
+<div class="adc-header">
+  <div>
+    <h2>Document Control</h2>
+    <p>Upload, review, and release controlled ASPICE documents.</p>
+  </div>
+  <% if User.current.allowed_to?(:submit_aspice_documents, @project) %>
+    <%= link_to "Upload document", multi_dmsf_upload_path(id: @project), class: "icon icon-add button-positive" %>
+  <% end %>
+</div>
+
+<nav class="adc-filters" aria-label="Document views">
+  <% [["all", "All"], ["draft", "My drafts"], ["mine", "Waiting for me"], ["approval", "In approval"], ["approved", "Approved"], ["returned", "Returned"]].each do |value, label| %>
+    <%= link_to label,
+                dmsf_folder_path(id: @project.identifier, document_control: "1", filter: value),
+                class: (@filter == value ? "selected" : nil) %>
+  <% end %>
+</nav>
+
+<div class="adc-table-wrap">
+  <table class="list adc-table">
+    <thead>
+      <tr>
+        <th>Document</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th>Current stage</th>
+        <th>Current approver</th>
+        <th>Updated</th>
+        <th class="buttons">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @files.each do |file| %>
+        <% revision = file.last_revision %>
+        <% status = document_control_status(revision) %>
+        <tr>
+          <td class="adc-document"><%= link_to(revision&.title.presence || file.name, dmsf_file_path(file)) %><small><%= file.name %></small></td>
+          <td><%= revision&.version || "-" %></td>
+          <td><span class="adc-status adc-<%= status.parameterize %>"><%= status %></span></td>
+          <td><%= document_control_step(revision) %></td>
+          <td><%= document_control_approvers(revision) %></td>
+          <td><%= format_time(file.updated_at) %></td>
+          <td class="buttons adc-actions">
+            <% if revision && status == "Draft" && User.current.allowed_to?(:submit_aspice_documents, @project) %>
+              <%= button_to "Submit",
+                            assignment_dmsf_workflow_path(document_control_workflow,
+                              project_id: @project.id,
+                              dmsf_file_revision_id: revision.id,
+                              action: "start",
+                              back_url: dmsf_folder_path(id: @project.identifier, document_control: "1")),
+                            method: :post,
+                            params: { commit: l(:button_submit), dmsf_workflow_id: document_control_workflow.id },
+                            class: "button-positive" %>
+            <% elsif revision && document_control_actionable?(revision) && User.current.allowed_to?(:approve_aspice_documents, @project) %>
+              <% assignment = document_control_assignment(revision) %>
+              <%= button_to "Approve",
+                            new_action_dmsf_workflow_path(revision.dmsf_workflow_id,
+                              project_id: @project.id,
+                              dmsf_file_revision_id: revision.id,
+                              dmsf_workflow_step_assignment_id: assignment.id,
+                              back_url: dmsf_folder_path(id: @project.identifier, document_control: "1")),
+                            method: :post,
+                            params: { commit: l(:button_submit), step_action: DmsfWorkflowStepAction::ACTION_APPROVE },
+                            class: "button-positive" %>
+              <details class="adc-reject"><summary>Return</summary><%= form_tag new_action_dmsf_workflow_path(revision.dmsf_workflow_id, project_id: @project.id, dmsf_file_revision_id: revision.id, dmsf_workflow_step_assignment_id: assignment.id, back_url: dmsf_folder_path(id: @project.identifier, document_control: "1")), method: :post do %><%= hidden_field_tag :commit, l(:button_submit) %><%= hidden_field_tag :step_action, DmsfWorkflowStepAction::ACTION_REJECT %><%= text_field_tag :note, nil, placeholder: "Reason required", required: true %><%= submit_tag "Return", class: "button" %><% end %></details>
+            <% elsif status == "Approved" %>
+              <%= link_to "Open", dmsf_file_path(file), class: "icon icon-file" %>
+            <% else %>
+              <span class="adc-muted">-</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @files.empty? %>
+        <tr><td colspan="7" class="nodata">No documents in this view.</td></tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

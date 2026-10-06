@@ -28,5 +28,11 @@
   Stable `Trace ID` custom-field values are used for imports and audit output.
 - Five golden paths and their configuration are maintained by
   `aspice-demo/seed_redmine.rb`. The script is idempotent.
+- Controlled ASPICE documents are managed from
+  `/projects/aspice-requirements/dmsf?document_control=1`. The approval path is
+  Technical Review, ASPICE QA Review, then Document Control Release; approved
+  revisions remain locked.
+- `aspice-demo/verify_document_control.rb` creates at most one clearly named
+  demo document and verifies all three approvals and the final lock.
 - Software Unit issues link to source artifacts under `aspice-demo/src/` at
   immutable Git commit `736f3801e02d2a993b509684c405654892261da0`.
