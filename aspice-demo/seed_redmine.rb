@@ -17,6 +17,10 @@ raise "An administrator account is required" unless admin
 # their trees independent while allowing explicit cross-project trace links.
 Setting.cross_project_issue_relations = "1"
 Setting.issue_group_assignment = "1"
+Setting.plugin_redmine_issues_tree = Setting.plugin_redmine_issues_tree.to_h.merge(
+  "default_redirect_to_tree_view" => "true",
+  "default_redirect_to_tree_view_without_project" => "false"
+)
 
 default_status = IssueStatus.where(is_closed: false).order(:position).first
 resolved_status = IssueStatus.find_by(name: "已解決") || default_status
@@ -86,6 +90,40 @@ verification_trackers = trackers.values_at(
 )
 requirements_project.trackers = requirement_trackers
 verification_project.trackers = verification_trackers
+
+def ensure_public_tracker_query(project:, admin:, name:, tracker:)
+  query = IssueQuery.find_or_initialize_by(project: project, name: name)
+  query.user = admin
+  query.visibility = Query::VISIBILITY_PUBLIC
+  query.filters = {
+    "status_id" => { operator: "*", values: [""] },
+    "tracker_id" => { operator: "=", values: [tracker.id.to_s] }
+  }
+  query.column_names = %i[tracker status priority subject assigned_to updated_on]
+  query.sort_criteria = [["subject", "asc"], ["id", "desc"]]
+  query.group_by = nil
+  query.save!
+  query
+end
+
+{
+  "CReq - Customer Requirements" => trackers[:customer_requirement],
+  "SYS - System Requirements" => trackers[:system_requirement],
+  "SWR - Software Requirements" => trackers[:software_requirement],
+  "SWU - Software Units" => trackers[:software_unit]
+}.each do |name, tracker|
+  ensure_public_tracker_query(project: requirements_project, admin: admin, name: name, tracker: tracker)
+end
+
+{
+  "SYS.4 - Integration Verification" => trackers[:sys4],
+  "SYS.5 - System Verification" => trackers[:sys5],
+  "SWE.4 - Unit Verification" => trackers[:swe4],
+  "SWE.5 - Integration Verification" => trackers[:swe5],
+  "SWE.6 - Software Verification" => trackers[:swe6]
+}.each do |name, tracker|
+  ensure_public_tracker_query(project: verification_project, admin: admin, name: name, tracker: tracker)
+end
 
 developer_permissions = Role.find_by(name: "開發人員")&.permissions || []
 observer_permissions = %i[
@@ -462,6 +500,8 @@ end
 puts "PROJECTS=#{[root_project, requirements_project, verification_project].map(&:identifier).join(',')}"
 puts "TRACKERS=#{trackers.values.map(&:name).join(',')}"
 puts "CUSTOM_FIELDS=#{fields.values.map(&:name).join(',')}"
+puts "TREE_VIEW_DEFAULT=#{Setting.plugin_redmine_issues_tree['default_redirect_to_tree_view']}"
+puts "SAVED_QUERIES=#{IssueQuery.where(project_id: [requirements_project.id, verification_project.id]).count}"
 puts "ISSUES=#{Issue.where(project_id: [requirements_project.id, verification_project.id]).count}"
 puts "RELATIONS=#{IssueRelation.count}"
 puts "SOURCE_COMMIT=#{SOURCE_COMMIT}"
