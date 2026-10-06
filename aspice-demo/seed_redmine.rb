@@ -497,11 +497,130 @@ end
   legacy_group&.destroy!
 end
 
+result_colors = {
+  "Pass" => "#16a34a",
+  "Fail" => "#dc2626",
+  "Blocked" => "#d97706",
+  "Not Executed" => "#64748b"
+}
+levels = %i[sys4 sys5 swe4 swe5 swe6]
+level_labels = {
+  sys4: "SYS.4", sys5: "SYS.5", swe4: "SWE.4", swe5: "SWE.5", swe6: "SWE.6"
+}
+test_issues = paths.each_with_index.to_h do |path, index|
+  number = format("%03d", index + 1)
+  tests = levels.to_h do |level|
+    trace_id = "TC-#{level.to_s.upcase}-#{path[:token]}-#{number}"
+    [level, issue_by_trace_id(verification_project, fields[:trace_id], trace_id)]
+  end
+  [path[:code], tests]
+end
+result_counts = result_colors.keys.to_h do |result|
+  count = test_issues.values.flat_map(&:values).compact.count do |issue|
+    issue.custom_field_value(fields[:verification_result]) == result
+  end
+  [result, count]
+end
+covered_paths = test_issues.count { |_code, tests| levels.all? { |level| tests[level].present? } }
+coverage_percent = (covered_paths * 100.0 / paths.size).round
+pass_angle = (result_counts["Pass"] * 360.0 / 25).round(1)
+fail_angle = pass_angle + (result_counts["Fail"] * 360.0 / 25).round(1)
+blocked_angle = fail_angle + (result_counts["Blocked"] * 360.0 / 25).round(1)
+
+matrix_rows = paths.map do |path|
+  cells = levels.map do |level|
+    issue = test_issues.fetch(path[:code]).fetch(level)
+    result = issue.custom_field_value(fields[:verification_result])
+    %(<td><a class="aspice-result aspice-#{result.downcase.tr(' ', '-')}" href="/issues/#{issue.id}">#{result}</a></td>)
+  end.join
+  %(<tr><th><span>#{path[:code]}</span>#{path[:name]}</th>#{cells}</tr>)
+end.join
+
+legend = result_counts.map do |result, count|
+  %(<span><i style="background:#{result_colors.fetch(result)}"></i>#{result} <b>#{count}</b></span>)
+end.join
+
+dashboard_css = <<~CSS
+  #aspice-dashboard { clear:both; color:#172033; max-width:1400px; margin:0 auto; }
+  #aspice-dashboard * { box-sizing:border-box; }
+  #aspice-dashboard .aspice-head { display:flex; justify-content:space-between; gap:24px; align-items:flex-end; margin:6px 0 24px; padding-bottom:18px; border-bottom:1px solid #d9e0e9; }
+  #aspice-dashboard h1 { margin:0 0 6px; font-size:28px; letter-spacing:0; }
+  #aspice-dashboard .aspice-sub { margin:0; color:#526078; font-size:14px; }
+  #aspice-dashboard .aspice-actions { display:flex; gap:8px; flex-wrap:wrap; }
+  #aspice-dashboard .aspice-button { display:inline-flex; align-items:center; gap:7px; padding:9px 13px; border:1px solid #b8c5d6; border-radius:6px; background:#fff; color:#174ea6; font-weight:600; text-decoration:none; }
+  #aspice-dashboard .aspice-button.primary { color:#fff; border-color:#1559c7; background:#1559c7; }
+  #aspice-dashboard .aspice-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-bottom:26px; }
+  #aspice-dashboard .aspice-card { border:1px solid #d9e0e9; border-radius:7px; background:#fff; padding:18px; min-width:0; }
+  #aspice-dashboard .aspice-card h3 { margin:0 0 16px; font-size:16px; letter-spacing:0; }
+  #aspice-dashboard .aspice-chart { display:flex; align-items:center; justify-content:center; min-height:190px; gap:22px; }
+  #aspice-dashboard .aspice-donut { position:relative; width:144px; height:144px; flex:0 0 144px; border-radius:50%; }
+  #aspice-dashboard .aspice-donut:after { content:""; position:absolute; inset:27px; border-radius:50%; background:#fff; }
+  #aspice-dashboard .aspice-donut strong { position:absolute; z-index:1; inset:0; display:grid; place-content:center; text-align:center; font-size:25px; line-height:1.1; }
+  #aspice-dashboard .aspice-donut strong small { display:block; margin-top:5px; color:#667085; font-size:11px; font-weight:500; }
+  #aspice-dashboard .aspice-products { background:conic-gradient(#2563eb 0 10%,#0f766e 10% 20%,#c2410c 20% 30%,#7c3aed 30% 40%,#475569 40% 90%,#cbd5e1 90% 100%); }
+  #aspice-dashboard .aspice-coverage { background:conic-gradient(#0f9f7f 0 #{coverage_percent}%,#dc2626 #{coverage_percent}% 100%); }
+  #aspice-dashboard .aspice-verdicts { background:conic-gradient(#16a34a 0 #{pass_angle}deg,#dc2626 #{pass_angle}deg #{fail_angle}deg,#d97706 #{fail_angle}deg #{blocked_angle}deg,#64748b #{blocked_angle}deg 360deg); }
+  #aspice-dashboard .aspice-legend { display:flex; flex-direction:column; gap:9px; font-size:12px; color:#526078; }
+  #aspice-dashboard .aspice-legend span { display:flex; align-items:center; gap:7px; }
+  #aspice-dashboard .aspice-legend i { width:9px; height:9px; border-radius:2px; }
+  #aspice-dashboard .aspice-legend b { margin-left:auto; color:#172033; }
+  #aspice-dashboard .aspice-section-head { display:flex; align-items:baseline; justify-content:space-between; gap:20px; margin:0 0 12px; }
+  #aspice-dashboard .aspice-section-head h2 { margin:0; font-size:20px; letter-spacing:0; }
+  #aspice-dashboard .aspice-section-head span { color:#667085; font-size:12px; }
+  #aspice-dashboard .aspice-matrix-wrap { overflow-x:auto; border:1px solid #d9e0e9; border-radius:7px; }
+  #aspice-dashboard .aspice-matrix { width:100%; min-width:760px; border-collapse:collapse; background:#fff; }
+  #aspice-dashboard .aspice-matrix th,#aspice-dashboard .aspice-matrix td { padding:12px 14px; border-bottom:1px solid #e5e9f0; text-align:center; }
+  #aspice-dashboard .aspice-matrix thead th { color:#526078; background:#f6f8fb; font-size:12px; text-transform:uppercase; }
+  #aspice-dashboard .aspice-matrix tbody th { width:34%; text-align:left; font-weight:500; }
+  #aspice-dashboard .aspice-matrix tbody th span { display:inline-block; min-width:58px; margin-right:8px; color:#1559c7; font-weight:700; }
+  #aspice-dashboard .aspice-matrix tr:last-child th,#aspice-dashboard .aspice-matrix tr:last-child td { border-bottom:0; }
+  #aspice-dashboard .aspice-result { display:inline-block; min-width:88px; padding:5px 7px; border-radius:4px; color:#fff; font-size:11px; font-weight:700; text-decoration:none; }
+  #aspice-dashboard .aspice-pass { background:#16a34a; }
+  #aspice-dashboard .aspice-fail { background:#dc2626; }
+  #aspice-dashboard .aspice-blocked { background:#d97706; }
+  #aspice-dashboard .aspice-not-executed { background:#64748b; }
+  @media (max-width:900px) { #aspice-dashboard .aspice-grid { grid-template-columns:1fr; } #aspice-dashboard .aspice-head { align-items:flex-start; flex-direction:column; } }
+CSS
+
+dashboard_html = <<~HTML
+  <div id="aspice-dashboard">
+    <div class="aspice-head">
+      <div><h1>ASPICE Traceability Dashboard</h1><p class="aspice-sub">Five Golden Paths from customer intent to verification evidence</p></div>
+      <div class="aspice-actions">
+        <a class="aspice-button primary" href="/projects/aspice-requirements/issues_trees/tree_index">Requirement Tree</a>
+        <a class="aspice-button" href="/projects/aspice-verification/issues_trees/tree_index">Verification Tree</a>
+      </div>
+    </div>
+    <div class="aspice-grid">
+      <section class="aspice-card"><h3>Traceability Records</h3><div class="aspice-chart"><div class="aspice-donut aspice-products"><strong>45<small>work products</small></strong></div><div class="aspice-legend"><span><i style="background:#2563eb"></i>CReq<b>5</b></span><span><i style="background:#0f766e"></i>SYS<b>5</b></span><span><i style="background:#c2410c"></i>SWR<b>5</b></span><span><i style="background:#7c3aed"></i>SWU<b>5</b></span><span><i style="background:#475569"></i>Test Case<b>25</b></span></div></div></section>
+      <section class="aspice-card"><h3>End-to-End Coverage</h3><div class="aspice-chart"><div class="aspice-donut aspice-coverage"><strong>#{coverage_percent}%<small>#{covered_paths} of #{paths.size} paths</small></strong></div><div class="aspice-legend"><span><i style="background:#0f9f7f"></i>Covered<b>#{covered_paths}</b></span><span><i style="background:#dc2626"></i>Gap<b>#{paths.size - covered_paths}</b></span></div></div></section>
+      <section class="aspice-card"><h3>Verification Results</h3><div class="aspice-chart"><div class="aspice-donut aspice-verdicts"><strong>#{result_counts['Pass']} / 25<small>passed test cases</small></strong></div><div class="aspice-legend">#{legend}</div></div></section>
+    </div>
+    <div class="aspice-section-head"><h2>Golden Path Verification Matrix</h2><span>Click a verdict to open its evidence</span></div>
+    <div class="aspice-matrix-wrap"><table class="aspice-matrix"><thead><tr><th>Golden Path</th>#{levels.map { |level| "<th>#{level_labels.fetch(level)}</th>" }.join}</tr></thead><tbody>#{matrix_rows}</tbody></table></div>
+  </div>
+HTML
+
+wiki = root_project.wiki || Wiki.create!(project: root_project, start_page: "ASPICE_Dashboard", status: 1)
+wiki.update!(start_page: "ASPICE_Dashboard")
+page = WikiPage.find_or_initialize_by(wiki: wiki, title: "ASPICE_Dashboard")
+page.protected = true
+page.save!
+content = page.content || WikiContent.new(page: page)
+dashboard_text = "{{css\n#{dashboard_css}}}\n\n{{html\n#{dashboard_html}}}"
+if content.new_record? || content.text != dashboard_text
+  content.author = admin
+  content.comments = "Refresh ASPICE demo dashboard"
+  content.text = dashboard_text
+  content.save!
+end
+
 puts "PROJECTS=#{[root_project, requirements_project, verification_project].map(&:identifier).join(',')}"
 puts "TRACKERS=#{trackers.values.map(&:name).join(',')}"
 puts "CUSTOM_FIELDS=#{fields.values.map(&:name).join(',')}"
 puts "TREE_VIEW_DEFAULT=#{Setting.plugin_redmine_issues_tree['default_redirect_to_tree_view']}"
 puts "SAVED_QUERIES=#{IssueQuery.where(project_id: [requirements_project.id, verification_project.id]).count}"
+puts "WIKI_START_PAGE=#{wiki.start_page}"
 puts "ISSUES=#{Issue.where(project_id: [requirements_project.id, verification_project.id]).count}"
 puts "RELATIONS=#{IssueRelation.count}"
 puts "SOURCE_COMMIT=#{SOURCE_COMMIT}"

@@ -22,6 +22,7 @@
 - Their issue trees are available at:
   - `/projects/aspice-requirements/issues_trees/tree_index`
   - `/projects/aspice-verification/issues_trees/tree_index`
+  - `/projects/aspice-demo/wiki/ASPICE_Dashboard`
   - Project issue pages default to the issue-tree view. The requirements project has public CReq, SYS, SWR, and SWU saved queries; the verification project has public SYS.4, SYS.5, SWE.4, SWE.5, and SWE.6 saved queries.
 - Cross-project Redmine issue relations provide bidirectional traceability.
   Stable `Trace ID` custom-field values are used for imports and audit output.
