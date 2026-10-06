@@ -16,6 +16,7 @@ raise "An administrator account is required" unless admin
 # Requirement and verification work products live in separate projects. Keep
 # their trees independent while allowing explicit cross-project trace links.
 Setting.cross_project_issue_relations = "1"
+Setting.issue_group_assignment = "1"
 
 default_status = IssueStatus.where(is_closed: false).order(:position).first
 resolved_status = IssueStatus.find_by(name: "已解決") || default_status
@@ -119,7 +120,12 @@ end
 groups = {
   requirements: ensure_group("ASPICE Requirement Team"),
   verification: ensure_group("ASPICE Verification Team"),
-  process_qa: ensure_group("ASPICE Process QA Team")
+  process_qa: ensure_group("ASPICE Process QA Team"),
+  sys4: ensure_group("ASPICE SYS.4 Team"),
+  sys5: ensure_group("ASPICE SYS.5 Team"),
+  swe4: ensure_group("ASPICE SWE.4 Team"),
+  swe5: ensure_group("ASPICE SWE.5 Team"),
+  swe6: ensure_group("ASPICE SWE.6 Team")
 }
 
 def ensure_membership(project, principal, role)
@@ -134,6 +140,10 @@ ensure_membership(requirements_project, groups[:verification], roles[:observer])
 ensure_membership(verification_project, groups[:verification], roles[:verification_engineer])
 ensure_membership(requirements_project, groups[:process_qa], roles[:process_qa])
 ensure_membership(verification_project, groups[:process_qa], roles[:process_qa])
+groups.values_at(:sys4, :sys5, :swe4, :swe5, :swe6).each do |group|
+  ensure_membership(requirements_project, group, roles[:observer])
+  ensure_membership(verification_project, group, roles[:verification_engineer])
+end
 
 def ensure_custom_field(name:, format:, trackers:, projects:, description:, possible_values: nil, required: false)
   field = IssueCustomField.find_or_initialize_by(name: name)
@@ -170,7 +180,7 @@ fields = {
   ),
   golden_path: ensure_custom_field(
     name: "Golden Path", format: "list", trackers: all_trackers, projects: all_projects,
-    description: "Demo end-to-end traceability path.", possible_values: path_values, required: true
+    description: "Demo end-to-end traceability path.", possible_values: path_values
   ),
   aspice_process: ensure_custom_field(
     name: "ASPICE Process", format: "list", trackers: all_trackers, projects: all_projects,
@@ -281,7 +291,7 @@ def issue_by_trace_id(project, trace_field, trace_id)
   )
 end
 
-def ensure_issue(project:, tracker:, author:, status:, priority:, subject:, description:, parent:, values:, trace_field:)
+def ensure_issue(project:, tracker:, author:, status:, priority:, subject:, description:, parent:, values:, trace_field:, assigned_to: nil)
   trace_id = values.fetch(trace_field.id)
   issue = issue_by_trace_id(project, trace_field, trace_id) || Issue.new(project: project)
   issue.tracker = tracker
@@ -291,6 +301,7 @@ def ensure_issue(project:, tracker:, author:, status:, priority:, subject:, desc
   issue.subject = subject
   issue.description = description
   issue.parent_issue_id = parent&.id
+  issue.assigned_to = assigned_to
   issue.custom_field_values = values.transform_keys(&:to_s)
   issue.save!
   issue
@@ -320,6 +331,37 @@ def ensure_relation(test_issue, work_product)
 end
 
 created = []
+
+verification_labels = {
+  sys4: "SYS.4 - System Integration and Integration Verification",
+  sys5: "SYS.5 - System Verification",
+  swe4: "SWE.4 - Software Unit Verification",
+  swe5: "SWE.5 - Software Component and Integration Verification",
+  swe6: "SWE.6 - Software Verification"
+}
+
+verification_groups = {}
+verification_labels.each do |level, label|
+  process_code = level.to_s.upcase.sub(/([A-Z]+)(\d+)/, '\\1.\\2')
+  verification_groups[level] = ensure_issue(
+    project: verification_project,
+    tracker: trackers[:verification_group],
+    author: admin,
+    status: default_status,
+    priority: default_priority,
+    subject: label,
+    description: "Department-owned verification layer covering all five golden paths.",
+    parent: nil,
+    assigned_to: groups.fetch(level),
+    values: common_values(
+      fields,
+      trace_id: "TRG-VER-#{level.to_s.upcase}",
+      golden_path: "",
+      process: process_code
+    ),
+    trace_field: fields[:trace_id]
+  )
+end
 
 paths.each_with_index do |path, index|
   number = format("%03d", index + 1)
@@ -372,15 +414,6 @@ paths.each_with_index do |path, index|
     values: unit_values, trace_field: fields[:trace_id]
   )
 
-  verification_group = ensure_issue(
-    project: verification_project, tracker: trackers[:verification_group], author: admin,
-    status: default_status, priority: default_priority,
-    subject: "#{path[:code]} - #{path[:name]}",
-    description: "Verification-side traceability container for #{golden_path}.", parent: nil,
-    values: common_values(fields, trace_id: "TRG-VER-#{number}", golden_path: golden_path, process: "SYS.4"),
-    trace_field: fields[:trace_id]
-  )
-
   verification_targets = {
     sys4: [sys],
     sys5: [sys],
@@ -388,14 +421,6 @@ paths.each_with_index do |path, index|
     swe5: [swr, unit],
     swe6: [swr]
   }
-  verification_labels = {
-    sys4: "SYS.4 integration verification",
-    sys5: "SYS.5 system verification",
-    swe4: "SWE.4 unit verification",
-    swe5: "SWE.5 component and integration verification",
-    swe6: "SWE.6 software verification"
-  }
-
   verification_targets.each do |level, targets|
     result = path[:results].fetch(level)
     test_trace_id = "TC-#{level.to_s.upcase}-#{path[:token]}-#{number}"
@@ -414,13 +439,24 @@ paths.each_with_index do |path, index|
         "Expected: behavior remains consistent with the linked work product.",
         "Demo verdict: #{result}."
       ].join("\n\n"),
-      parent: verification_group, values: values, trace_field: fields[:trace_id]
+      parent: verification_groups.fetch(level),
+      assigned_to: groups.fetch(level),
+      values: values,
+      trace_field: fields[:trace_id]
     )
     targets.each { |target| ensure_relation(test_issue, target) }
     created << test_issue
   end
 
-  created.concat([requirement_group, creq, sys, swr, unit, verification_group])
+  created.concat([requirement_group, creq, sys, swr, unit])
+end
+
+# Migrate the original golden-path-owned verification roots after their test
+# cases have been moved under department-owned process roots.
+(1..5).each do |index|
+  legacy_trace_id = "TRG-VER-#{format('%03d', index)}"
+  legacy_group = issue_by_trace_id(verification_project, fields[:trace_id], legacy_trace_id)
+  legacy_group&.destroy!
 end
 
 puts "PROJECTS=#{[root_project, requirements_project, verification_project].map(&:identifier).join(',')}"
