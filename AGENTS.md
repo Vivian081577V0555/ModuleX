@@ -14,3 +14,17 @@
 - Nginx on the Lightsail host terminates HTTPS and proxies each subdomain to
   its corresponding local Docker port.
 
+## ASPICE Demo
+
+- The ASPICE demo runs at `https://enterprise-demo.modules-x.com`.
+- Requirements and verification are intentionally separated into the
+  `aspice-requirements` and `aspice-verification` Redmine projects.
+- Their issue trees are available at:
+  - `/projects/aspice-requirements/issues_trees/tree_index`
+  - `/projects/aspice-verification/issues_trees/tree_index`
+- Cross-project Redmine issue relations provide bidirectional traceability.
+  Stable `Trace ID` custom-field values are used for imports and audit output.
+- Five golden paths and their configuration are maintained by
+  `aspice-demo/seed_redmine.rb`. The script is idempotent.
+- Software Unit issues link to source artifacts under `aspice-demo/src/` at
+  immutable Git commit `736f3801e02d2a993b509684c405654892261da0`.
