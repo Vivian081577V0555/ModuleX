@@ -24,6 +24,9 @@
   - `/projects/aspice-verification/issues_trees/tree_index`
   - `/projects/aspice-demo/wiki/ASPICE_Dashboard`
   - Project issue pages default to the issue-tree view. The requirements project has public CReq, SYS, SWR, and SWU saved queries; the verification project has public SYS.4, SYS.5, SWE.4, SWE.5, and SWE.6 saved queries.
+- The ASPICE dashboard uses the `{{aspice_dashboard}}` macro from
+  `redmine_aspice_dashboard`; its charts and matrix are calculated live from
+  Redmine issues and do not depend on Metabase.
 - Cross-project Redmine issue relations provide bidirectional traceability.
   Stable `Trace ID` custom-field values are used for imports and audit output.
 - Five golden paths and their configuration are maintained by

@@ -1,0 +1,29 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "aspice_dashboard", plugin: :redmine_aspice_dashboard %>
+<% end %>
+
+<div id="aspice-dashboard">
+  <div class="aspice-head">
+    <div><h1>ASPICE Traceability Dashboard</h1><p class="aspice-sub">Live data for five Golden Paths from customer intent to verification evidence</p></div>
+    <div class="aspice-actions">
+      <a class="aspice-button primary" href="/projects/aspice-requirements/issues_trees/tree_index">Requirement Tree</a>
+      <a class="aspice-button" href="/projects/aspice-verification/issues_trees/tree_index">Verification Tree</a>
+    </div>
+  </div>
+  <div class="aspice-grid">
+    <section class="aspice-card">
+      <div class="aspice-card-title"><h3>Traceability Records</h3><details class="aspice-note"><summary aria-label="Explain Traceability Records">i</summary><div class="aspice-note-panel"><strong>What is being managed?</strong>Shows the live number and composition of traceable work products. Grouping containers are excluded.</div></details></div>
+      <div class="aspice-chart"><div class="aspice-donut" style="background:<%= dashboard.product_gradient %>"><strong><%= dashboard.total_products %><small>work products</small></strong></div><div class="aspice-legend"><% dashboard.product_counts.each_with_index do |(label, count), index| %><span><i style="background:<%= (AspiceDashboard::Snapshot::REQUIREMENT_TRACKERS.map { |item| item[2] } + ['#475569'])[index] %>"></i><%= label %><b><%= count %></b></span><% end %></div></div>
+    </section>
+    <section class="aspice-card">
+      <div class="aspice-card-title"><h3>End-to-End Coverage</h3><details class="aspice-note"><summary aria-label="Explain End-to-End Coverage">i</summary><div class="aspice-note-panel"><strong>Are the trace links complete?</strong>Measures how many Golden Paths contain all requirement, software-unit, and verification levels. Coverage does not mean the tests have passed.</div></details></div>
+      <div class="aspice-chart"><div class="aspice-donut" style="background:conic-gradient(#0f9f7f 0 <%= dashboard.coverage_percent %>%,#dc2626 <%= dashboard.coverage_percent %>% 100%)"><strong><%= dashboard.coverage_percent %>%<small><%= dashboard.covered_paths %> of <%= dashboard.paths.size %> paths</small></strong></div><div class="aspice-legend"><span><i style="background:#0f9f7f"></i>Covered<b><%= dashboard.covered_paths %></b></span><span><i style="background:#dc2626"></i>Gap<b><%= dashboard.paths.size - dashboard.covered_paths %></b></span></div></div>
+    </section>
+    <section class="aspice-card">
+      <div class="aspice-card-title"><h3>Verification Results</h3><details class="aspice-note"><summary aria-label="Explain Verification Results">i</summary><div class="aspice-note-panel"><strong>How is verification progressing?</strong>Shows the current verdict for all test cases across SYS.4, SYS.5, SWE.4, SWE.5, and SWE.6.</div></details></div>
+      <div class="aspice-chart"><div class="aspice-donut" style="background:<%= dashboard.result_gradient %>"><strong><%= dashboard.result_counts['Pass'] %> / <%= dashboard.total_tests %><small>passed test cases</small></strong></div><div class="aspice-legend"><% AspiceDashboard::Snapshot::RESULT_COLORS.each do |result, color| %><span><i style="background:<%= color %>"></i><%= result %><b><%= dashboard.result_counts[result] %></b></span><% end %></div></div>
+    </section>
+  </div>
+  <div class="aspice-section-head"><h2>Golden Path Verification Matrix</h2><span>Live values; click a verdict to open its evidence</span></div>
+  <div class="aspice-matrix-wrap"><table class="aspice-matrix"><thead><tr><th>Golden Path</th><% AspiceDashboard::Snapshot::TEST_TRACKERS.each do |label, _tracker| %><th><%= label %></th><% end %></tr></thead><tbody><% dashboard.paths.each do |path| %><tr><th><span><%= path[:code] %></span><%= path[:label] %></th><% AspiceDashboard::Snapshot::TEST_TRACKERS.each do |label, _tracker| %><% issue = path[:tests][label] %><td><% if issue %><% result = dashboard.result_for(issue) %><a class="aspice-result aspice-<%= result.parameterize %>" href="/issues/<%= issue.id %>"><%= result %></a><% else %><span class="aspice-missing">Missing</span><% end %></td><% end %></tr><% end %></tbody></table></div>
+</div>

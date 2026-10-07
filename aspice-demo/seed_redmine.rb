@@ -731,7 +731,7 @@ page = WikiPage.find_or_initialize_by(wiki: wiki, title: "ASPICE_Dashboard")
 page.protected = true
 page.save!
 content = page.content || WikiContent.new(page: page)
-dashboard_text = "{{css\n#{dashboard_css}}}\n\n{{html\n#{dashboard_html}}}"
+dashboard_text = "{{aspice_dashboard}}"
 if content.new_record? || content.text != dashboard_text
   content.author = admin
   content.comments = "Refresh ASPICE demo dashboard"
