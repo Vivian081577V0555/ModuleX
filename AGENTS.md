@@ -37,5 +37,9 @@
   revisions remain locked.
 - `aspice-demo/verify_document_control.rb` creates at most one clearly named
   demo document and verifies all three approvals and the final lock.
+- The DMSF root `ISO 26262 - 48V Auxiliary Battery Safety` contains the
+  project-start document framework: 10 lifecycle folders, 36 editable
+  templates, and 6 Redmine milestones. It is created idempotently by
+  `aspice-demo/seed_iso26262_documents.rb`.
 - Software Unit issues link to source artifacts under `aspice-demo/src/` at
   immutable Git commit `736f3801e02d2a993b509684c405654892261da0`.
