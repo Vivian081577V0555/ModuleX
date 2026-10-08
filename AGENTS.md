@@ -41,5 +41,9 @@
   project-start document framework: 10 lifecycle folders, 36 editable
   templates, and 6 Redmine milestones. It is created idempotently by
   `aspice-demo/seed_iso26262_documents.rb`.
+- The DMSF root `Automotive SPICE 4.0 - Project Work Products` contains 40
+  project-start templates across MAN.3, SYS.1-5, SWE.1-6, HWE.1-4,
+  SUP.1/8/9/10, ACQ.4, and CL2/CL3 evidence. It is created idempotently by
+  `aspice-demo/seed_aspice_documents.rb` together with 7 project milestones.
 - Software Unit issues link to source artifacts under `aspice-demo/src/` at
   immutable Git commit `736f3801e02d2a993b509684c405654892261da0`.
