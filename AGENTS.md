@@ -45,5 +45,9 @@
   project-start templates across MAN.3, SYS.1-5, SWE.1-6, HWE.1-4,
   SUP.1/8/9/10, ACQ.4, and CL2/CL3 evidence. It is created idempotently by
   `aspice-demo/seed_aspice_documents.rb` together with 7 project milestones.
+- `ISO26262_Automotive_SPICE_Work_Product_Crosswalk.md` is a root-level DMSF
+  document beside both framework folders. Its 37-row reuse and relationship
+  table is created idempotently by
+  `aspice-demo/seed_iso26262_aspice_crosswalk.rb`.
 - Software Unit issues link to source artifacts under `aspice-demo/src/` at
   immutable Git commit `736f3801e02d2a993b509684c405654892261da0`.
