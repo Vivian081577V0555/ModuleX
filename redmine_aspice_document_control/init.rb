@@ -9,19 +9,15 @@ Redmine::Plugin.register :redmine_aspice_document_control do
   requires_redmine version_or_higher: "5.0.0"
 
   project_module :aspice_document_control do
-    permission :view_aspice_document_control, {}, read: true
-    permission :submit_aspice_documents, {}
-    permission :approve_aspice_documents, {}
+    permission :view_aspice_document_control, { aspice_document_control: [:index] }, read: true
+    permission :submit_aspice_documents, { aspice_document_control: [:index] }
+    permission :approve_aspice_documents, { aspice_document_control: [:index] }
   end
 
   menu :project_menu,
        :aspice_document_control,
-       { controller: "dmsf", action: "show", document_control: "1" },
+       { controller: "aspice_document_control", action: "index" },
        caption: "Document Control",
        after: :dmsf,
-       param: :id
-end
-
-Rails.application.config.to_prepare do
-  DmsfController.helper(:aspice_document_control) if defined?(DmsfController)
+       param: :project_id
 end

@@ -32,7 +32,9 @@
 - Five golden paths and their configuration are maintained by
   `aspice-demo/seed_redmine.rb`. The script is idempotent.
 - Controlled ASPICE documents are managed from
-  `/projects/aspice-requirements/dmsf?document_control=1`. The approval path is
+  `/projects/aspice-requirements/document-control`. The approval page mirrors
+  DMSF's two-level folder hierarchy and keeps root-level documents separate.
+  The approval path is
   Technical Review, ASPICE QA Review, then Document Control Release; approved
   revisions remain locked.
 - `aspice-demo/verify_document_control.rb` creates at most one clearly named
