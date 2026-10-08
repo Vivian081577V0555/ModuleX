@@ -31,6 +31,9 @@
   Stable `Trace ID` custom-field values are used for imports and audit output.
 - Five golden paths and their configuration are maintained by
   `aspice-demo/seed_redmine.rb`. The script is idempotent.
+- `aspice-demo/enrich_test_cases.rb` adds execution-ready steps, acceptance
+  criteria, evidence rules, and two clearly labelled simulated PNG assets to
+  each of the 25 verification test cases without changing their verdicts.
 - Controlled ASPICE documents are managed from
   `/projects/aspice-requirements/document-control`. The approval page mirrors
   DMSF's two-level folder hierarchy and keeps root-level documents separate.
