@@ -448,12 +448,18 @@ end
 def ensure_issue(project:, tracker:, author:, status:, priority:, subject:, description:, parent:, values:, trace_field:, assigned_to: nil)
   trace_id = values.fetch(trace_field.id)
   issue = issue_by_trace_id(project, trace_field, trace_id) || Issue.new(project: project)
+  structured_steps = IssueCustomField.find_by(name: "Test Steps")
+  preserve_test_form = issue.persisted? && structured_steps && issue.custom_field_value(structured_steps).present?
+  if preserve_test_form
+    verification_result = IssueCustomField.find_by(name: "Verification Result")
+    values = values.except(verification_result.id) if verification_result
+  end
   issue.tracker = tracker
   issue.author = author
   issue.status = status
   issue.priority = priority
   issue.subject = subject
-  issue.description = description
+  issue.description = description unless preserve_test_form
   issue.parent_issue_id = parent&.id
   issue.assigned_to = assigned_to
   issue.custom_field_values = values.transform_keys(&:to_s)

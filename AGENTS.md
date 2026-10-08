@@ -34,6 +34,9 @@
 - `aspice-demo/enrich_test_cases.rb` adds execution-ready steps, acceptance
   criteria, evidence rules, and two clearly labelled simulated PNG assets to
   each of the 25 verification test cases without changing their verdicts.
+- `aspice-demo/configure_test_case_fields.rb` migrates those specifications to
+  11 full-width Test Case form fields. Eight specification fields are required;
+  the main seed preserves populated forms and their current verdicts.
 - Controlled ASPICE documents are managed from
   `/projects/aspice-requirements/document-control`. The approval page mirrors
   DMSF's two-level folder hierarchy and keeps root-level documents separate.
